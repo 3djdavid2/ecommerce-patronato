@@ -1,0 +1,34 @@
+
+<div class="container">
+
+    <div class="filter">
+        <app-filter [marca]="marcas" [categories]="categorias"></app-filter>       
+    </div>
+
+
+    <div class="pagination">
+        <app-paginator 
+        (cambioPagina)="paginacion($event)" 
+        [totProd]= "totProd"
+        [itemsXPage]="pageSize"
+       
+        ></app-paginator>
+    </div>
+
+    <div class="buscador">
+        <app-search></app-search>
+    </div>
+
+
+    <div class="productos">
+
+        <div class="productos">
+            <app-products [products]="products"></app-products>
+        </div>
+     
+
+    </div>
+
+</div>
+
+<!-- <app-spinner *ngIf="loading$ | async"></app-spinner> -->

@@ -1,0 +1,8 @@
+<div class="tareas">
+    <h1>Tareas Generales</h1>
+    <ul>
+        <li *ngFor="let cliente of clientes">
+            {{cliente._id}} - {{cliente.name}}: {{cliente.description}}
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,59 @@
+
+<mat-card class="my-card">
+
+
+    <mat-card-title class="card-title">
+        <img mat-card-image class="imagen" src="../../../assets/images/user1.png" alt="login image">
+        <span class="texto-img">Acceder a mi cuenta</span>
+    </mat-card-title>
+
+
+    <mat-card-content class="card-contenido">
+
+        <form [formGroup]="formIngreso" (ngSubmit)="signin()" class="my-form" *ngIf="!loading">
+
+            <mat-form-field class="full-width" color="primary">
+
+                <input class="campos" type="email" id="email" matInput placeholder="Email" formControlName="email"
+                    autocomplete="off">
+
+                <div class="error" *ngIf="f['email'].touched && f['email'].invalid">
+                    <div *ngIf="f['email'].errors && f['email'].errors['required']">Email es requerido.</div>
+                    <div *ngIf="f['email'].errors && f['email'].errors['pattern']">email no válido.</div>
+                </div>
+
+                <div class="error" *ngIf="mensaje.includes('email')">{{mensaje}}</div>
+
+            </mat-form-field>
+
+
+            <mat-form-field class="full-width" color="accent">
+
+                <input class="campos" id="password" type="password" matInput placeholder="Password"
+                    formControlName="password" autocomplete="off">
+
+                <div class="error" *ngIf="f['password'].touched && f['password'].invalid">
+                    <div *ngIf="f['password'].errors && f['password'].errors['required']">Password requerido</div>
+                    <div *ngIf="f['password'].errors && f['password'].errors['minlength']">no válido aún</div>
+                </div>
+
+                <div class="error" *ngIf="mensaje.includes('password')">{{mensaje}}</div>
+
+
+            </mat-form-field>
+
+            <mat-card-actions>
+                <button mat-raised-button color="primary" type="submit" color="accent" class="btn-block"
+                    [disabled]="!formIngreso.valid">Acceder</button>
+
+            </mat-card-actions>
+
+        </form>
+
+        <!-- <mat-spinner></mat-spinner> -->
+        <mat-spinner class="spinner" mode="indeterminate" diameter="50" *ngIf="loading">
+        </mat-spinner>
+
+    </mat-card-content>
+
+</mat-card>

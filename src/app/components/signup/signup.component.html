@@ -1,0 +1,69 @@
+<div class="container-signup">
+    <mat-card class="my-card">
+
+        <mat-card-title>
+            <span>Crear una cuenta</span>
+        </mat-card-title>
+
+        <mat-card-content>
+
+            <form [formGroup]="formRegistro" (ngSubmit)="signup()" class="my-form">
+
+
+                <mat-form-field class="full-width" color="primary">
+
+                    <input class="campos" type="email" id="email" matInput placeholder="Email" formControlName="email">
+
+                    <div class="error" *ngIf="f['email'].touched && f['email'].invalid">
+                        <div *ngIf="formRegistro.controls['email'].errors && formRegistro.controls['email'].errors['required']">Email es requerido.</div>
+                        <div *ngIf="f['email'].errors && f['email'].errors['pattern']">email no válido.</div>
+                    </div>
+
+                    <div class="error" *ngIf="!verify">{{mensaje}}</div>
+
+                </mat-form-field>
+
+                <!-- Contraseña -->
+                <mat-form-field class="full-width" color="accent">
+
+                    <input class="campos" id="password" type="password" matInput placeholder="Password"
+                        formControlName="password">
+
+                    <div class="error" *ngIf="f['password'].touched && f['password'].invalid">
+                        <div *ngIf="f['password'].errors && f['password'].errors['required']">Password requerido</div>
+                        <div *ngIf="f['password'].errors && f['password'].errors['minlength']">no válido aún</div>
+                    </div>
+
+
+                </mat-form-field>
+
+                <!-- Confirmacion de contraseña -->
+                <mat-form-field class="full-width" color="accent">
+
+                    <input class="campos" id="passwordConfirm" type="password" matInput placeholder="Repita Password"
+                        formControlName="passwordConfirm">
+
+                    <div class="error" *ngIf="f['passwordConfirm'].touched && f['passwordConfirm'].invalid">
+                        <div *ngIf="f['passwordConfirm'].errors && f['passwordConfirm'].errors['required']">Password
+                            requerido</div>
+                        <div *ngIf="f['passwordConfirm'].errors && f['passwordConfirm'].errors['minlength']">no válido
+                            aún
+                        </div>
+                    </div>
+
+
+                </mat-form-field>
+
+                <div *ngIf="formRegistro.errors?.['coinciden'] && (formRegistro.touched || formRegistro.dirty)"
+                    class="error">
+                    No coinciden los password
+                </div>
+
+                <button type="submit" color="accent" class="btn-block" [disabled]="!formRegistro.valid">Acceder</button>
+
+            </form>
+
+        </mat-card-content>
+
+    </mat-card>
+</div>

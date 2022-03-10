@@ -1,0 +1,56 @@
+.example-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+div {
+    padding-top: 20px;
+    /* background-color: rgb(192, 192, 192); */
+}
+
+.my-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.full-width {
+    width: 100%;
+
+}
+
+.my-card {
+    width: 400px;
+
+    display: block;
+    margin: auto auto;
+    margin-top: 50px;
+    margin-bottom: 100px;
+    background-color: rgb(175, 175, 175);
+    text-align: center;
+}
+
+input.ng-valid.ng-touched {
+    border: 1px solid green;
+}
+
+input.ng-invalid.ng-touched {
+    border: 1px solid rgb(105, 105, 105);
+}
+
+.error {
+    color: rgb(194, 37, 37);
+
+    size: 10px;
+    font-size: 90%;
+}
+
+.campos {
+   
+    height: 30px;
+}
+
+input:hover{
+    cursor:auto;
+}

@@ -1,0 +1,8 @@
+<div class="tareas">
+    <h1>Tareas privadas solo para usuarios registrados</h1>
+    <ul>
+        <li *ngFor="let producto of productos">
+            {{producto._id}} - {{producto.name}}: {{producto.description}}
+        </li>
+    </ul>
+</div>

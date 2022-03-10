@@ -1,0 +1,30 @@
+<div class="header">
+
+  <div class="header__title">
+    <div>
+      <a class="app-a" routerLinkActive="app-a_active" (click)="onClicked()">
+        <span class="material-icons md-36 estiloIcon">menu</span>
+      </a>
+    </div>
+    <span>Store </span>
+  </div>
+
+  <div class="header__navigation" fxHide.xs fxHide.sm>
+    <a class="app-a" routerLink="home" routerLinkActive="app-a_active">Home</a>
+    <a class="app-a" routerLink="shop" routerLinkActive="app-a_active">Tienda</a>
+    <a class="app-a" routerLink="contacto" routerLinkActive="app-a_active">Contacto</a>
+  </div>
+
+  <div class="header__buttons" fxHide.xs fxHide.sm>
+    <a class="app-a" routerLink="carrito" routerLinkActive="app-a_active">
+      <span class="material-icons md-36 estiloIcon">shopping_cart</span>
+    </a>
+
+    <app-button routerLink="/signin">Login</app-button>
+
+    <app-button routerLink="/signup">Registrar</app-button>
+
+  </div>
+
+
+</div>

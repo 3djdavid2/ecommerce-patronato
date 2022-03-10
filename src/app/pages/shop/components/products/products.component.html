@@ -1,0 +1,40 @@
+<div products="products"> Productos</div>
+
+<ul class="cards">
+
+    <li class="cards__item" *ngFor="let product of products">
+        <mat-card class="mat-class">
+
+            <mat-card-header>
+                <mat-card-title>{{product.nombre}}</mat-card-title>
+                <mat-card-subtitle>Categoria: {{product.categoria}}</mat-card-subtitle>
+            </mat-card-header>
+
+            <div>
+                <img mat-card-image src="{{product.imgURL}}" alt="{{product.nombre}}">
+            </div>
+
+            <mat-card-content>
+                <div>
+                    <div>Código: {{product.codigo}}</div>
+                   
+                </div>
+                <p>Descripcion: {{product.descripcion}}
+                </p>
+            </mat-card-content>
+
+
+            <div class="precio">Precio: $ {{product.precio}}.-</div>
+            <div class="precio">el metro</div>
+
+
+            <mat-card-actions>
+                <button mat-button>Ver</button>
+                <button mat-button>Comprar</button>
+            </mat-card-actions>
+
+        </mat-card>
+
+    </li>
+
+</ul>
