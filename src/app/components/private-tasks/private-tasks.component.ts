@@ -20,7 +20,7 @@ export class PrivateTasksComponent implements OnInit {
       .subscribe({
         next: (res) => {
 
-          console.log(" ok", res)
+          console.log("ok", res)
           this.productos = res;
 
         },

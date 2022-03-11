@@ -32,9 +32,12 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   arrNavLink!: ElementRef[];
 
   //binding al css
-  @HostBinding("style.--duration")
-  @Input()
-  duration: string;
+  // @HostBinding("style.--duration")
+  // @Input()
+  // duration: string;
+
+
+
 
   //DOM
   @ViewChild('mySlider', { static: true }) mySlider!: ElementRef;
@@ -45,7 +48,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.totImg = 0
     this.estado = true;
     this.arrowActual = "";
-    this.duration = '20s';
+    // this.duration = '20s';
     this.arrUrlIMG = []
 
     //tiempos en milisegundos cambio de imagen en slider

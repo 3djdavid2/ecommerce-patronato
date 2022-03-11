@@ -16,6 +16,9 @@ img {
   padding-left: 305px;
   padding-right: 305px;
 }
+img:hover {
+  cursor: pointer;
+}
 
 .images-wrapper {
   display: flex;
