@@ -14,18 +14,12 @@ export class AppComponent implements OnInit {
 
   constructor(
     public authService: AuthService    
-  ) { }
+  ) {
+    
+   }
 
   ngOnInit() {
     
   }
-
-
-
-
-
-
-
-
 
 }
