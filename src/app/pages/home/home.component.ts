@@ -32,11 +32,13 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   arrNavLink!: ElementRef[];
 
   //binding al css
-  // @HostBinding("style.--duration")
-  // @Input()
-  // duration: string;
+  @HostBinding("style.--paddLeft")
+  @Input()
+  paddLeft: string;
 
-
+  @HostBinding("style.--paddRight")
+  @Input()
+  paddRight: string;
 
 
   //DOM
@@ -48,8 +50,10 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.totImg = 0
     this.estado = true;
     this.arrowActual = "";
-    // this.duration = '20s';
     this.arrUrlIMG = []
+    
+    this.paddLeft = '305px';
+    this.paddRight = '305px';
 
     //tiempos en milisegundos cambio de imagen en slider
     this.timeImageSlide = 2000

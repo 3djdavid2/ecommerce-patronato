@@ -19,6 +19,6 @@ export class TasksService {
     return this.http.get<any>(this.URL + '/clientes')
   }
   getProductos(){
-    return this.http.get<any>(this.URL + '/productos')
+    return this.http.get<any>(this.URL + '/api/productos')
   }
 }

@@ -13,11 +13,15 @@
 }
 
 img {
-  padding-left: 305px;
-  padding-right: 305px;
+  padding-left: var(--paddLeft);
+  padding-right: var(--paddRight);
 }
 img:hover {
+  display: block;
   cursor: pointer;
+  transition: filter 200ms;
+  filter: contrast(85%);
+  
 }
 
 .images-wrapper {

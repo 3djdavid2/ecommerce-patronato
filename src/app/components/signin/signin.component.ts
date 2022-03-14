@@ -7,10 +7,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms'
 //importo el servicio
 import { AuthService } from '../../services/auth.service'
 //material
-import {
-  MatSnackBar
-  
-} from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { Subscription } from 'rxjs';
 
