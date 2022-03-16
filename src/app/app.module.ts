@@ -31,7 +31,7 @@ import { MenuListComponent } from './components/menu-list/menu-list.component'
 import { environment } from '@src/environments/environment';
 import { ContactComponent } from './components/contact/contact.component';
 import { HomeComponent } from './pages/home/home.component';
-import { ServiceWorkerModule } from '@angular/service-worker';
+
 
 
 const APP_DATE_FORMATS: MatDateFormats = {
@@ -71,12 +71,7 @@ const APP_DATE_FORMATS: MatDateFormats = {
     HttpClientModule,
     NotificationModule.forRoot(),
     MatNativeDateModule,
-    ServiceWorkerModule.register('ngsw-worker.js', {
-      enabled: environment.production,
-      // Register the ServiceWorker as soon as the application is stable
-      // or after 30 seconds (whichever comes first).
-      registrationStrategy: 'registerWhenStable:30000'
-    }),
+   
    
   ],
   providers: [
