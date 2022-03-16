@@ -31,6 +31,11 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   arrUrlIMG: string[];
   arrNavLink!: ElementRef[];
 
+  idImgSelected!: number;
+
+  inicioX!: number;
+  finX!: number;
+
   //binding al css
   @HostBinding("style.--paddLeft")
   @Input()
@@ -39,6 +44,26 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   @HostBinding("style.--paddRight")
   @Input()
   paddRight: string;
+
+  //Arrastrar con mouse o dedo para desplazar imágenes
+  @HostListener('mousedown', ['$event']) onMouseDown(e: any) {
+    e.preventDefault()
+    this.inicioX = e.offsetX
+  }
+  @HostListener('mouseup', ['$event']) onMouseUp(e: any) {
+
+    this.limpiarIntervalos();
+    this.finX = e.offsetX
+    const resultado = this.inicioX - this.finX
+
+    if (resultado > 0) {
+      this.next(1)
+    } else if (resultado < 0) {
+      this.prev(1)
+    }
+    //ciclo infinito
+    this.timeOutCiclo(this.timeImageClick, this.timeImageSlide)
+  }
 
 
   //DOM
@@ -51,7 +76,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.estado = true;
     this.arrowActual = "";
     this.arrUrlIMG = []
-    
+
     this.paddLeft = '305px';
     this.paddRight = '305px';
 
@@ -69,7 +94,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     //Ultima imagen del array al inicio del array
     this.arrUrlIMG.splice(0, 0, this.arrUrlIMG[this.arrUrlIMG.length - 1])
     this.arrUrlIMG.pop()
-
   }
 
 
@@ -80,21 +104,24 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
     for (let i = 0; i < this.totImg; i++) {
 
-      const id = i
+      // const id = i
       const imgNew = this.renderer.createElement('img');
-      this.renderer.setAttribute(imgNew, 'id', id.toString())
-      this.renderer.setAttribute(imgNew, 'class', `img${id.toString()}`)
+      this.renderer.setAttribute(imgNew, 'id', i.toString())
+      this.renderer.setAttribute(imgNew, 'class', `img${i.toString()}`)
       this.renderer.setAttribute(imgNew, 'src', `./assets/images/${this.arrUrlIMG[i]}`);
       this.renderer.appendChild(this.imgDiv.nativeElement, imgNew);
     }
-
-    this.renderer.addClass(this.imgDiv.nativeElement, 'active')
 
     //desplazo contenedor de imagenes una posicion hacia la izquierda para ocultar la imagen 0 que es la ultima del array inicial.
     this.renderer.setStyle(this.imgDiv.nativeElement, 'transition', 'transform 1s')
     this.renderer.setStyle(this.imgDiv.nativeElement, 'transform', 'translateX(-100%)')
 
     this.loopInfinite();
+  }
+
+  selectedCard(e: any) {
+    //TODO  --enviar a página preview para ver el producto y sus caracteristicas
+    this.idImgSelected = e.target.id
   }
 
 
@@ -110,14 +137,13 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.intervalo = setInterval(() => {
 
       this.cuenta += 1
-      //Si llegamos a la ultima imagen del array, se aumenta en 1 el ciclo cada vez
+      //se aumenta en 1 el ciclo cada vez
       if (this.imgActual == 0) {
         this.ciclo += 1
         this.translateX = this.ciclo * 100 * this.totImg
       }
       //
       this.imgActual += 1
-
       if (this.imgActual > (this.totImg - 1)) {
         this.imgActual = 0
       }
@@ -142,15 +168,21 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     }, this.timeImageSlide)
   }
 
+  //Ciclo infinito despues de dar click a botones flecha o botones radio
+  timeOutCiclo(timeOut: any, timeInterval: any) {
+    this.timeOut = setTimeout(() => {
+      this.interval = setInterval(() => {
+        this.next(1)
+      }, timeInterval)
+    }, timeOut);
+  }
 
-  onClickRadioBoton(i: number) {
+  onClickRadioBoton(idRadio: number) {
 
-    clearInterval(this.intervalo)
-    clearInterval(this.interval)
-    clearTimeout(this.timeOut)
+    this.limpiarIntervalos();
 
     //Color a boton radio activo
-    this.botonRadioPulsado = i
+    this.botonRadioPulsado = idRadio
     var btnActual = 0
 
     if (this.imgDesplazar == (this.totImg - 1)) {
@@ -164,46 +196,44 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
     if (resta < 0) {
       this.next(Math.abs(resta))
-
     } else if (resta > 0) {
       this.prev(Math.abs(resta))
-    }
+    };
 
     this.timeOutCiclo(this.timeImageClick, this.timeImageSlide)
 
   }
 
-  //Funcion al dar clic en flechas <>*********************************************************
-  onClickRow(arrowPulsada: string) {
 
+  //Limpiar todos los intervalos para detener la animación
+  limpiarIntervalos() {
     clearInterval(this.intervalo)
     clearInterval(this.interval)
     clearTimeout(this.timeOut)
+  }
 
-    //NEXT>******************************
+
+  //Funcion al dar clic en flechas <>
+  onClickRow(arrowPulsada: string) {
+
+    this.limpiarIntervalos()
+
+    //NEXT>
     if (arrowPulsada == 'next') {
       this.next(1)
-
-      //<PREV*****************************
+      //<PREV
     } else if (arrowPulsada == 'prev') {
       this.prev(1)
-    }
+    };
 
     this.timeOutCiclo(this.timeImageClick, this.timeImageSlide)
   }
 
-  //Ciclo infinito despues de dar click a botones flecha o botones radio
-  timeOutCiclo(timeOut: any, timeInterval: any) {
-    this.timeOut = setTimeout(() => {
-      this.interval = setInterval(() => {
-        this.next(1)
-      }, timeInterval)
-    }, timeOut);
-
-  }
 
 
+  //Next loop
   next(loop: number) {
+
 
     for (let i = 0; i < loop; i++) {
 
@@ -217,15 +247,11 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         //
         this.imgActual += 1
 
-        if (this.imgActual > (this.totImg - 1)) {
-          this.imgActual = 0
-        }
+        if (this.imgActual > (this.totImg - 1)) { this.imgActual = 0 }
 
         this.imgDesplazar = this.imgActual - 1
 
-        if (this.imgActual == 0) {
-          this.imgDesplazar = this.totImg - 1
-        }
+        if (this.imgActual == 0) { this.imgDesplazar = this.totImg - 1 }
 
         //desplazar todo
         this.cuenta += 1
@@ -289,7 +315,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       }
     }
 
-    //Color a boton radio activo
+    //Radio boton activo
     var btnActual = 0
     if (this.imgDesplazar == (this.totImg - 1)) {
       btnActual = 0
@@ -303,7 +329,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   //al salir del home, elimino el loop intervalo********************
   ngOnDestroy(): void {
-    clearInterval(this.intervalo)
+    this.limpiarIntervalos()
   }
 
 

@@ -1,6 +1,6 @@
 <div class="container">
     <div id="inner" class="inner" #mySlider>        
-        <div class="images-wrapper" #imgDiv>
+        <div class="images-wrapper" #imgDiv (click)="selectedCard($event)">
         </div>
 
         <div id="prev" class="slider__navbutton" (click)="onClickRow('prev')"></div>
@@ -10,7 +10,7 @@
         <div class="slider__nav">
             <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
                 [(ngModel)]="radioButtonId" >
-                <mat-radio-button class="example-radio-button" *ngFor="let boton of arrUrlIMG; let i=index" [value]="boton"
+                <mat-radio-button color='primary' class="example-radio-button" *ngFor="let boton of arrUrlIMG; let i=index" [value]="boton"
                     [checked]="true" (click)="onClickRadioBoton(i)">
                 </mat-radio-button>
             </mat-radio-group>
