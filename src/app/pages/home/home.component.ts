@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   timeImageClick: number;
 
   arrUrlIMG: string[];
-  arrNavLink!: ElementRef[];
+  // arrNavLink!: ElementRef[];
 
   idImgSelected!: number;
 
@@ -65,9 +65,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.timeOutCiclo(this.timeImageClick, this.timeImageSlide)
   }
 
-
-  //DOM
-  @ViewChild('mySlider', { static: true }) mySlider!: ElementRef;
+  //DOM  
   @ViewChild("imgDiv") imgDiv!: ElementRef;
 
   constructor(private renderer: Renderer2) {
@@ -81,7 +79,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.paddRight = '305px';
 
     //tiempos en milisegundos cambio de imagen en slider
-    this.timeImageSlide = 2000
+    this.timeImageSlide = 3000
     //tiempo en milisegundos a esperar luego de dar click a flechas o botones radio
     this.timeImageClick = 5000
 
