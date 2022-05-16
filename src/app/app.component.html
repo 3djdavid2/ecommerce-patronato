@@ -4,7 +4,9 @@
     </mat-sidenav>
 
     <mat-sidenav-content>
+
         <app-header (menuClicked)="menu.toggle()"></app-header>
+
         <main>
             <router-outlet></router-outlet>
         </main>

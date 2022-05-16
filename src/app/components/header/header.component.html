@@ -16,13 +16,20 @@
   </div>
 
   <div class="header__buttons" fxHide.xs fxHide.sm>
+
     <a class="app-a" routerLink="carrito" routerLinkActive="app-a_active">
       <span class="material-icons md-36 estiloIcon">shopping_cart</span>
     </a>
 
-    <app-button routerLink="/signin">Login</app-button>
+   
+    <div *ngIf="!authService.loggedIn(); else loggedIn">
+      <app-button routerLink="/signin">Login</app-button>
+      <app-button routerLink="/signup">Registrar</app-button>
+    </div>
 
-    <app-button routerLink="/signup">Registrar</app-button>
+    <ng-template #loggedIn>
+      <app-button (click)="authService.logout()">Cerrar Sesion</app-button>
+    </ng-template>
 
   </div>
 

@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, OnInit, Output, EventEmitter } from '@angular/core';
-
+import { ChangeDetectionStrategy, Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { AuthService } from '../../services/auth.service'
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -9,16 +9,18 @@ import { ChangeDetectionStrategy, Component, OnInit, Output, EventEmitter } from
 })
 export class HeaderComponent implements OnInit {
 
+  @Input() isAuthorized!: boolean | null;
   @Output() menuClicked = new EventEmitter();
-
-  constructor() { }
+ 
+  constructor(public authService: AuthService,) { }
 
   ngOnInit(): void {
   }
 
-  onClicked() : void {
+  onClicked(): void {
     this.menuClicked.emit();
   }
+  
 
 
 }
