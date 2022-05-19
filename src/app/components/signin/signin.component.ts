@@ -67,23 +67,28 @@ export class SigninComponent {
 
     this.authService.signIn(this.formIngreso.value)
       .subscribe({
-        next: (res) => {
-          // console.info("token generado ok en sigin",res)
-          localStorage.setItem('token', res.token);
-          this.router.navigate(['/shop']);
+        next: (res) => {          
+        
+          if (res.token === 'tosignup') {            
+            this.router.navigate(['/signup']);
+
+          } else if(res.token === 'tomailconfirm'){
+            console.log("se enviará un email de confirmacion")
+          }else{
+            localStorage.setItem('token', res.token);
+            this.router.navigate(['/shop']);
+          }
 
         },
         error: (e) => {
-
+          console.error('signin error en respuesta de no token')
           this.mensaje = e.error.message
           this.verify = e.error.verify
-
           this.error();
-
 
         },
         complete: () => {
-          console.info('completed')
+          console.info('signin completed')
         }
       })
   }

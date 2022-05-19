@@ -63,18 +63,28 @@ export class SignupComponent implements OnInit {
     this.authService.signUp(this.formRegistro.value)
       .subscribe({
         next: (res) => {
-          // console.log("token generado ok")
-          localStorage.setItem('token', res.token);
-          this.router.navigate(['/shop']);
+
+          if (res.token === 'tosignin') {            
+            this.router.navigate(['/signin']);
+
+          } else if(res.token === 'tomailconfirm'){
+            console.log("se enviará un email de confirmacion")
+          }else{
+
+            localStorage.setItem('token', res.token);
+            this.router.navigate(['/shop']);
+          }
+         
+
 
         },
         error: (e) => {
-          
+
           this.mensaje = e.error.message
           this.verify = e.error.verify
         },
         complete: () => {
-          console.info('complete')
+          console.info('signup complete')
 
           this.formRegistro = new FormGroup({
             email: new FormControl(),

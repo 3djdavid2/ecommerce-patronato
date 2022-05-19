@@ -1,7 +1,7 @@
 
 import { Injectable } from '@angular/core';
 //
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Router } from '@angular/router'
 
 import { environment } from '../../environments/environment'
@@ -11,7 +11,7 @@ import { environment } from '../../environments/environment'
 })
 export class AuthService {
 
- 
+
   private URL = environment.url
 
   constructor(
@@ -21,15 +21,20 @@ export class AuthService {
 
   signUp(user: any) {
     // console.log(user) //= {email: 'sddd@d.cl', password: '123456', passwordConfirm: '123456'}
-    
-     return this.http.post<any>(this.URL + '/api/auth/registro', user)   
-    
+
+    return this.http.post<any>(this.URL + '/api/auth/registro', user)
+
   }
 
 
   signIn(user: any) {
     
-    return this.http.post<any>(this.URL + '/api/auth/ingreso', user)
+    let headers = new HttpHeaders({
+      'clicksignin': 'true'
+    });
+    let options = { headers: headers };
+
+    return this.http.post<any>(this.URL + '/api/auth/ingreso', user, options)
 
   }
 
