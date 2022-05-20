@@ -1,7 +1,6 @@
 
-import { Component, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router'
-
 import { FormGroup, FormControl, Validators } from '@angular/forms'
 
 //importo el servicio
@@ -9,7 +8,6 @@ import { AuthService } from '../../services/auth.service'
 //material
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-// import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
@@ -19,19 +17,12 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class SigninComponent {
 
   formIngreso: FormGroup;
-
-  usermail!: string;
-  email!:string;
   
   mensaje: string = "";
   verify: boolean = true;
 
-  // asyncResult?: Subscription
-
   loading: boolean = false;
-  tiempo = 0
-
-
+ 
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -57,7 +48,6 @@ export class SigninComponent {
     return this.formIngreso.controls
   }
 
-
   async signin() {
 
     await new Promise(resolve => {
@@ -65,11 +55,9 @@ export class SigninComponent {
       setTimeout(resolve, 1000)
 
     });
-
-    this.loading = false
-    this.usermail = this.formIngreso.value
-    
-    this.authService.signIn(this.usermail)
+    this.loading = false;
+      
+    this.authService.signIn(this.formIngreso.value)
       .subscribe({
         next: (res) => {
 
@@ -109,10 +97,4 @@ export class SigninComponent {
 
 
 
-
-
 }
-
-
-
-

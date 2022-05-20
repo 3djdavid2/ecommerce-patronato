@@ -10,14 +10,13 @@ import { Observable, Subject } from 'rxjs';
 export class AuthService {
 
   private URL = environment.url
-  // private email: string;
   private email$: Subject<string>;
 
   constructor(
     private http: HttpClient,
     private router: Router
   ) {
-    // this.email = '';
+   
     this.email$ = new Subject();
   }
 
@@ -56,8 +55,7 @@ export class AuthService {
   }
 
   logout() {
-    localStorage.removeItem('token');
-    
+    localStorage.removeItem('token');    
   }
 
 }

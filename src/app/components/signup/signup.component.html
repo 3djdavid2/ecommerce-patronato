@@ -62,6 +62,8 @@
                 <button mat-raised-button type="submit" color="accent" class="btn-block" [disabled]="!formRegistro.valid">Acceder</button>
                
             </form>
+            <mat-spinner class="spinner" mode="indeterminate" diameter="50" *ngIf="loading">
+            </mat-spinner>
 
         </mat-card-content>
 
