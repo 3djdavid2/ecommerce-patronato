@@ -1,5 +1,5 @@
 
-import { Component } from '@angular/core';
+import { Component, Output } from '@angular/core';
 import { Router } from '@angular/router'
 
 import { FormGroup, FormControl, Validators } from '@angular/forms'
@@ -9,8 +9,7 @@ import { AuthService } from '../../services/auth.service'
 //material
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { Subscription } from 'rxjs';
-
+// import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
@@ -21,13 +20,17 @@ export class SigninComponent {
 
   formIngreso: FormGroup;
 
+  usermail!: string;
+  email!:string;
+  
   mensaje: string = "";
   verify: boolean = true;
 
-  asyncResult?: Subscription
+  // asyncResult?: Subscription
 
   loading: boolean = false;
   tiempo = 0
+
 
   constructor(
     private authService: AuthService,
@@ -64,17 +67,20 @@ export class SigninComponent {
     });
 
     this.loading = false
-
-    this.authService.signIn(this.formIngreso.value)
+    this.usermail = this.formIngreso.value
+    
+    this.authService.signIn(this.usermail)
       .subscribe({
-        next: (res) => {          
-        
-          if (res.token === 'tosignup') {            
+        next: (res) => {
+
+          if (res.token === 'tosignup') {
+            alert("No existe email, se reenviará a registro");
             this.router.navigate(['/signup']);
 
-          } else if(res.token === 'tomailconfirm'){
-            console.log("se enviará un email de confirmacion")
-          }else{
+          } else if (res.token === 'tomailconfirm') {
+            alert("le enviamos un email de confirmacion")
+          } else {
+
             localStorage.setItem('token', res.token);
             this.router.navigate(['/shop']);
           }

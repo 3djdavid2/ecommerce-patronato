@@ -1,9 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router'
-
+import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators, ValidatorFn, ValidationErrors, AbstractControl } from '@angular/forms'
-
 //importo el servicio
 import { AuthService } from '../../services/auth.service'
 
@@ -64,7 +62,8 @@ export class SignupComponent implements OnInit {
       .subscribe({
         next: (res) => {
 
-          if (res.token === 'tosignin') {            
+          if (res.token === 'tosignin') {    
+            alert("Ya existe email, se reenviará a Login");        
             this.router.navigate(['/signin']);
 
           } else if(res.token === 'tomailconfirm'){

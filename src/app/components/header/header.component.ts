@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AuthService } from '../../services/auth.service'
 @Component({
   selector: 'app-header',
@@ -9,18 +9,21 @@ import { AuthService } from '../../services/auth.service'
 })
 export class HeaderComponent implements OnInit {
 
-  @Input() isAuthorized!: boolean | null;
+  pEmail!: any;
   @Output() menuClicked = new EventEmitter();
- 
-  constructor(public authService: AuthService,) { }
 
-  ngOnInit(): void {
+  constructor(public authService: AuthService) {
+    this.pEmail = ''
   }
 
+  ngOnInit(): void {
+    this.authService.getEmail$().subscribe(email => {
+      this.pEmail = email
+    })
+  }
+  
   onClicked(): void {
     this.menuClicked.emit();
   }
-  
-
 
 }

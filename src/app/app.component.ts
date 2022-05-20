@@ -10,16 +10,9 @@ export class AppComponent implements OnInit {
   fecha = new Intl.DateTimeFormat('es-ES', { dateStyle: 'full', timeStyle: 'short' }).format(this.f);
 
 
-  constructor(
+  constructor() { }
 
-  ) {
-
-  }
-
-  ngOnInit() {
-
-
-  }
+  ngOnInit() { }
 
 
 }
