@@ -1,3 +1,5 @@
+@import "styles/colors";
+
 .titulo {
     grid-area: titulo;
 }
@@ -42,7 +44,7 @@
     padding-left: 10px;
     padding-right: 20px;
     border-radius: 3%;
-    box-shadow: 5px 5px 35px 0px blue;
+    box-shadow: 5px 5px 35px 5px rgb(173, 173, 173);
     max-width: 400px;
     max-height: 500px;
     grid-template-areas:
@@ -50,7 +52,7 @@
         "formulario";
     gap: 10px;
     border-bottom: 50px;
-    background-color: #719ece;
+     background-color: $secondary-light;
 }
 .formulario {
     display: grid;
