@@ -9,6 +9,6 @@
 export const environment = {
     production: false,
     name: 'dev',
-    url:'http://localhost:5000'  
+    baseUrl:'http://localhost:5000'  
     
   };

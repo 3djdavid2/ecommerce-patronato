@@ -28,9 +28,12 @@ import { NotificationModule } from './services';
 import { MenuListComponent } from './components/menu-list/menu-list.component'
 
 //clase 261
-import { environment } from '@src/environments/environment';
-import { ContactComponent } from './components/contact/contact.component';
+
+
 import { HomeComponent } from './pages/home/home.component';
+import { ContactoComponent } from './pages/contacto/contacto.component';
+import { AutoFocusInputDirective } from './directivas/auto-focus-input.directive';
+
 
 
 
@@ -55,10 +58,9 @@ const APP_DATE_FORMATS: MatDateFormats = {
     PrivateTasksComponent,
     HeaderComponent,
     MenuListComponent,
-    ContactComponent,
     HomeComponent,
-    
-    
+    ContactoComponent,
+    AutoFocusInputDirective,    
   ],
   imports: [
     BrowserModule,

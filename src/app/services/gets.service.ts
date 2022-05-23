@@ -13,7 +13,7 @@ export class GetsService {
   private enviarData = new Subject<any>();
   enviarDataObservable = this.enviarData.asObservable();
 
-  private URL = environment.url
+  private URL = environment.baseUrl
 
   constructor(
     private http: HttpClient

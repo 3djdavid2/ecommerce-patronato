@@ -10,7 +10,7 @@ import {environment} from '../../environments/environment'
 })
 export class TasksService {
 
-    private URL = environment.url
+    private URL = environment.baseUrl
 
   constructor(private http: HttpClient) { }
 

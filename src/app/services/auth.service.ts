@@ -9,7 +9,7 @@ import { Observable, Subject } from 'rxjs';
 })
 export class AuthService {
 
-  private URL = environment.url
+  private URL = environment.baseUrl
   private email$: Subject<string>;
 
   constructor(

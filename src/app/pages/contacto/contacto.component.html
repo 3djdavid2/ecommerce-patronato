@@ -1,0 +1,32 @@
+<div class="container">
+    <h1 class="titulo">Formulario de contacto</h1>
+
+    <form class="formulario" [formGroup]="formulario" (ngSubmit)="onSubmit()">
+    
+
+        <label class="nombre">Nombre</label>
+        <input AutoFocusInput class="input1" type="text" required formControlName="nombre">
+
+
+        <label class="telefono">Teléfono</label>
+        <input class="input2" type="text" required formControlName="telefono" placeholder="Ej: +56 9 9999 9999">
+
+        <label class="email">E-mail</label>
+        <div class="email" *ngIf="f['email'].touched && f['email'].invalid"><br>
+            <div *ngIf="f['email'].errors && f['email'].errors['pattern']">no válido.</div>
+        </div>
+        <input class="input3" type="email" required formControlName="email">
+
+
+        <label class="mensaje">Mensaje</label>
+        <textarea class="textarea" cols='30' rows='6' required formControlName="mensaje"></textarea>
+      
+
+        <button mat-raised-button color="primary" class="enviar" [disabled]="!formulario.valid">Enviar</button>
+    </form>
+    <br>
+    <!-- <h3>Whatsapp: <br><a href="https://wa.me/56975107693">+569 7510 7693</a></h3> -->
+    <h3 class="tituloFinal">Correo Electrónico: <br>contacto@patronatotelas.cl</h3>
+
+</div>
+<br>
