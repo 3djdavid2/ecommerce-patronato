@@ -11,6 +11,7 @@ import { ContactoComponent } from '../../src/app/pages/contacto/contacto.compone
 import { HomeComponent } from '@app/pages/home/home.component';
 
 import { AuthGuard } from './auth.guard'
+import { SucursalesComponent } from './pages/sucursales/sucursales.component';
 
 const routes: Routes = [
   {
@@ -61,6 +62,10 @@ const routes: Routes = [
   {
     path: 'contacto',
     component: ContactoComponent
+  },
+  {
+    path: 'sucursales',
+    component: SucursalesComponent
   }
 ];
 
