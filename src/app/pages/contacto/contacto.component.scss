@@ -30,11 +30,17 @@
 .input3 {
     grid-area: input3;
 }
-.errorMail{
+.errorMail {
     grid-area: errorMail;
 }
-.textarea{
+.textarea {
     resize: none;
+}
+input {
+    padding-left: 5px;
+}
+textarea {
+    padding-left: 5px;
 }
 .container {
     display: grid;
@@ -43,8 +49,7 @@
     margin-top: 20px;
     padding-left: 10px;
     padding-right: 20px;
-    border-radius: 3%;
-    box-shadow: 5px 5px 35px 5px rgb(173, 173, 173);
+    border-radius: 3%;  
     max-width: 400px;
     max-height: 500px;
     grid-template-areas:
@@ -52,7 +57,7 @@
         "formulario";
     gap: 10px;
     border-bottom: 50px;
-     background-color: $secondary-light;
+    background-color: $secondary-light;
 }
 .formulario {
     display: grid;
@@ -66,28 +71,33 @@
 }
 
 div {
-    font-family: "Arial Rounded MT Bold","Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Verdana,
-        sans-serif;
+    font-family: "Arial Rounded MT Bold", "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode",
+        Verdana, sans-serif;
     font-size: 12px;
 }
 
 input:focus,
 .textarea:focus {
     outline: none !important;
-    border: 1px solid blue;
+    border: 1px solid $primary-dark;
     box-shadow: 0 0 10px #719ece;
 }
-.titulo{
+.titulo {
     padding-top: 20px;
 }
 
-.tituloFinal{
+.tituloFinal {
     margin-bottom: 290px;
 }
 
-@media screen and (max-width:600px) {
-    .tituloFinal{
+button{
+    background-color: $primary-light;
+      box-shadow: 2px 2px 25px 25px rgb(173, 173, 173);
+
+}
+
+@media screen and (max-width: 600px) {
+    .tituloFinal {
         margin-bottom: 200px;
     }
-    
 }
