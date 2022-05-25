@@ -4,7 +4,7 @@ export interface Product {
     categoria: string;
     categoriaId:number;
     marca: string;
-    marcaid:number;
+    marcaId:number;
     descripcion: string;
     imgURL: string;
     codigo: number;

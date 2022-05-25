@@ -2,16 +2,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-//Components
+//CARRITO CLIENTE INSCRITO
 import { TasksComponent } from './components/tasks/tasks.component'
+//PRODUCTOS CRUD ADMIN
 import { PrivateTasksComponent } from './components/private-tasks/private-tasks.component'
+
+//
 import { SignupComponent } from './components/signup/signup.component'
 import { SigninComponent } from './components/signin/signin.component'
 import { ContactoComponent } from '../../src/app/pages/contacto/contacto.component';
 import { HomeComponent } from '@app/pages/home/home.component';
-
-import { AuthGuard } from './auth.guard'
 import { SucursalesComponent } from './pages/sucursales/sucursales.component';
+
+//GUARDIANES
+import { AuthGuard } from './auth.guard'
+import { AdminGuard } from './admin.guard'
 
 const routes: Routes = [
   {
@@ -41,14 +46,15 @@ const routes: Routes = [
     path: 'home',
     component: HomeComponent
   },
-
-  {
-    path: 'clientes',
-    component: TasksComponent
-  },
+  
   {
     path: 'productos',
     component: PrivateTasksComponent,
+    canActivate: [AdminGuard]
+  },
+  {
+    path: 'carrito',
+    component: TasksComponent,
     canActivate: [AuthGuard]
   },
   {

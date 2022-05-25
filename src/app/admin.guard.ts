@@ -6,16 +6,15 @@ import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
-
-export class AuthGuard implements CanActivate {
+export class AdminGuard implements CanActivate {
 
   constructor(
     private authService: AuthService,
     private router: Router
   ) { }
 
-  //Si tiene token, puede ver CARRITO DE COMPRAS
   canActivate(): any {
+
     if (this.authService.loggedIn()) {
       return true;
     }
@@ -25,3 +24,5 @@ export class AuthGuard implements CanActivate {
 
 
 }
+
+

@@ -8,6 +8,7 @@ import { Product } from '../../store/list';
 })
 
 export class ProductsComponent implements OnInit {
+
   //recibo la lista de productos desde el padre
 
   @Input() products ! : Product[]; 
@@ -16,7 +17,7 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-  //  console.log("los productos: ", this.products);
+  console.log("los productos: ", this.products);
   }
 
 
