@@ -1,9 +1,18 @@
-@import 'styles/colors';
+@import "styles/colors";
 
-.suc{
+.suc {
     padding: 10px;
+    margin: 10px;
 }
-h2{
+h2 {
     max-width: 550px;
     background-color: $primary;
+}
+
+.horario {
+    margin-left: 20px;
+    max-width: 450px;
+    padding: 10px;
+    color: black;
+    border: 1px black solid;
 }
