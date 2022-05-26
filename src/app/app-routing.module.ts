@@ -3,9 +3,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 //CARRITO CLIENTE INSCRITO
-import { TasksComponent } from './components/tasks/tasks.component'
+import { CarritoComponent } from './components/carrito/carrito.component'
 //PRODUCTOS CRUD ADMIN
-import { PrivateTasksComponent } from './components/private-tasks/private-tasks.component'
+import { ProductosCrudComponent } from './components/productos-crud/productos-crud.component'
 
 //
 import { SignupComponent } from './components/signup/signup.component'
@@ -49,13 +49,13 @@ const routes: Routes = [
   
   {
     path: 'productos',
-    component: PrivateTasksComponent,
-    canActivate: [AdminGuard]
+    component: ProductosCrudComponent,
+    // canActivate: [AdminGuard]
   },
   {
     path: 'carrito',
-    component: TasksComponent,
-    canActivate: [AuthGuard]
+    component: CarritoComponent,
+    // canActivate: [AuthGuard]
   },
   {
     path: 'signin',

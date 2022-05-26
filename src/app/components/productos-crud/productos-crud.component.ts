@@ -1,17 +1,20 @@
 
 import { Component, OnInit } from '@angular/core';
 import { TasksService } from '../../services/tasks.service'
+
 @Component({
-  selector: 'app-private-tasks',
-  templateUrl: './private-tasks.component.html',
-  styleUrls: ['./private-tasks.component.scss']
+  selector: 'app-productos-crud',
+  templateUrl: './productos-crud.component.html',
+  styleUrls: ['./productos-crud.component.scss']
 })
 
-export class PrivateTasksComponent implements OnInit {
-
+export class ProductosCrudComponent implements OnInit {
+  
+  clientes: any = [];
+  
   constructor(private tasksService: TasksService) { }
-
   productos: any = [];
+
 
 
   ngOnInit(): void {
@@ -34,6 +37,24 @@ export class PrivateTasksComponent implements OnInit {
 
         }
       })
+
+    this.tasksService.getClientes()
+      .subscribe({
+        next: (res) => {
+          console.info("next ok client component", res)
+          this.clientes = res;
+
+        },
+        error: (e) => {
+          console.error("error aqui: ", e)
+          alert("error")
+        },
+        complete: () => {
+          console.info('complete')
+
+        }
+      })
+
 
 
   }

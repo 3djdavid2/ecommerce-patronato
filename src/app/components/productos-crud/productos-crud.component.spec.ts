@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PrivateTasksComponent } from './private-tasks.component';
+import { ProductosCrudComponent } from './productos-crud.component';
 
 describe('PrivateTasksComponent', () => {
-  let component: PrivateTasksComponent;
-  let fixture: ComponentFixture<PrivateTasksComponent>;
+  let component: ProductosCrudComponent;
+  let fixture: ComponentFixture<ProductosCrudComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PrivateTasksComponent ]
+      declarations: [ ProductosCrudComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PrivateTasksComponent);
+    fixture = TestBed.createComponent(ProductosCrudComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

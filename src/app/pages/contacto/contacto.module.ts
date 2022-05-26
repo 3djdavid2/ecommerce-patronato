@@ -6,14 +6,14 @@ import { ContactoRoutingModule } from './contacto-routing.module';
 import { ContactService } from '../../services/contact.service';
 
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { AutoFocusInputDirective } from '../../directivas/auto-focus-input.directive';
+// import { AutoFocusInputDirective } from '../../directivas/auto-focus-input.directive';
 
 import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
   declarations: [
-    AutoFocusInputDirective
+    // AutoFocusInputDirective
   ],
   imports: [
     CommonModule,

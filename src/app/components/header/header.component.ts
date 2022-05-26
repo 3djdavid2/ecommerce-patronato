@@ -5,7 +5,6 @@ import { AuthService } from '../../services/auth.service'
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
-
 })
 export class HeaderComponent implements OnInit {
 

@@ -7,15 +7,15 @@ import { AuthService } from '../../services/auth.service'
 })
 export class MenuListComponent implements OnInit {
 
-  pEmail!: any;
   @Output() menuToggle = new EventEmitter<void>();
+  pEmail!: any;
  
   constructor(public authService: AuthService) {
     this.pEmail = ''
   }
 
   ngOnInit(): void {
-    this.authService.loggedIn
+    this.authService.loggedIn();
     this.authService.getEmail$().subscribe(email => {
       this.pEmail = email
     })
@@ -23,7 +23,7 @@ export class MenuListComponent implements OnInit {
 
   closeMenu() {
     this.menuToggle.emit();
-    this.authService.logout();
+    
   }
 
 }
