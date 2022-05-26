@@ -15,7 +15,7 @@ export class AdminGuard implements CanActivate {
 
   canActivate(): any {
 
-    if (this.authService.loggedIn()) {
+    if (this.authService.isloggedIn()) {
       return true;
     }
     // this.router.navigate(['/heidi'])

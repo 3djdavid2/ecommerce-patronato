@@ -16,7 +16,7 @@ export class AuthGuard implements CanActivate {
 
   //Si tiene token, puede ver CARRITO DE COMPRAS
   canActivate(): any {
-    if (this.authService.loggedIn()) {
+    if (this.authService.isloggedIn()) {
       return true;
     }
     // this.router.navigate(['/heidi'])

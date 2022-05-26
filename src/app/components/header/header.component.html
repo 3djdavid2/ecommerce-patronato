@@ -20,10 +20,10 @@
 
     <a class="app-a" routerLink="carrito" routerLinkActive="app-a_active">
       <span class="material-icons md-36 estiloIcon">shopping_cart</span>
-    </a>shop
+    </a>
 
    
-    <div *ngIf="!authService.loggedIn(); else loggedIn">
+    <div *ngIf="!authService.isloggedIn(); else loggedIn">
       <app-button routerLink="/signin">Login</app-button>
       <app-button routerLink="/signup">Registrar</app-button>
     </div>

@@ -6,7 +6,7 @@
     <span class="navegation-list-label">Home</span>
   </a>
 
-  <div *ngIf="!authService.loggedIn(); else loggedIn">
+  <div *ngIf="!authService.isloggedIn(); else loggedIn">
     <a mat-list-item routerLink="/signin" (click)="closeMenu()">
       <mat-icon>login</mat-icon>
       <span class="navegation-list-label">Inicio Sesion</span>

@@ -46,7 +46,7 @@ export class AuthService {
   }
 
   //Comprobar si existe un token
-  loggedIn() {
+  isloggedIn() {
     return !!window.localStorage.getItem('token');
   }
 
