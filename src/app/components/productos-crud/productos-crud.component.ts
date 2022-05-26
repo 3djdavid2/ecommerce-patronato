@@ -11,49 +11,49 @@ import { TasksService } from '../../services/tasks.service'
 export class ProductosCrudComponent implements OnInit {
   
   clientes: any = [];
+  productos: any = [];
   
   constructor(private tasksService: TasksService) { }
-  productos: any = [];
-
-
 
   ngOnInit(): void {
 
-    this.tasksService.getProductos()
-      .subscribe({
-        next: (res) => {
+    console.log("crud de productos aqui")
 
-          console.log("private task ok", res)
-          this.productos = res;
+    // this.tasksService.getProductos()
+    //   .subscribe({
+    //     next: (res) => {
 
-        },
-        error: (e) => {
-          console.error("error aqui: ", e)
-          alert("error")
-        },
-        complete: () => {
-          console.info('complete')
+    //       console.log("private task ok", res)
+    //       this.productos = res;
+
+    //     },
+    //     error: (e) => {
+    //       console.error("error aqui: ", e)
+    //       alert("error")
+    //     },
+    //     complete: () => {
+    //       console.info('complete')
 
 
-        }
-      })
+    //     }
+    //   })
 
-    this.tasksService.getClientes()
-      .subscribe({
-        next: (res) => {
-          console.info("next ok client component", res)
-          this.clientes = res;
+    // this.tasksService.getClientes()
+    //   .subscribe({
+    //     next: (res) => {
+    //       console.info("next ok client component", res)
+    //       this.clientes = res;
 
-        },
-        error: (e) => {
-          console.error("error aqui: ", e)
-          alert("error")
-        },
-        complete: () => {
-          console.info('complete')
+    //     },
+    //     error: (e) => {
+    //       console.error("error aqui: ", e)
+    //       alert("error")
+    //     },
+    //     complete: () => {
+    //       console.info('complete')
 
-        }
-      })
+    //     }
+    //   })
 
 
 

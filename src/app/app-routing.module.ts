@@ -48,7 +48,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'productos',
+    path: 'productoscrud',
     component: ProductosCrudComponent,
     canActivate: [AdminGuard]
   },

@@ -19,11 +19,14 @@
 
 
   <ng-template #loggedIn>
+
     <h2 class="app-app" style="padding-top: 10px;">{{pEmail.email}}</h2>
-    <a mat-list-item routerLink="/home" (click)="closeMenu()">
+
+    <a mat-list-item routerLink="/" (click)="closeMenu()">
       <mat-icon>logout</mat-icon>
-      <span class="navegation-list-label">Salir</span>
+      <span (click)="authService.logout()" class="navegation-list-label">Salir</span>    
     </a>
+
   </ng-template>
 
 

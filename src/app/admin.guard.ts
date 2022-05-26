@@ -8,17 +8,24 @@ import { Router } from '@angular/router';
 })
 export class AdminGuard implements CanActivate {
 
+  isAdmin:boolean;//todo //borrar despues esta prueba
+
   constructor(
     private authService: AuthService,
     private router: Router
-  ) { }
+  ) {
+    this.isAdmin= true
+   }
 
   canActivate(): any {
 
     if (this.authService.isloggedIn()) {
-      return true;
+      if(this.isAdmin){
+        //si esta logeado y es admin, puede ver la pagina de crud de prodeuctos
+        return true;
+      }
     }
-    // this.router.navigate(['/heidi'])
+    
     return false;
   }
 
