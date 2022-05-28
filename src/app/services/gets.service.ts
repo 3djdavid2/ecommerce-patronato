@@ -21,6 +21,10 @@ export class GetsService {
 
   }
 
+  getProducto(id:number){
+    return this.http.get<any>(this.URL + `/api/Product/${id}`)
+  }
+
   getAllCount() {
     return this.http.get<any>(this.URL + `/api/Product/count`)
   }

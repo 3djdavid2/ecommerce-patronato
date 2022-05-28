@@ -69,6 +69,10 @@ export class SigninComponent {
             alert("le enviamos un email de confirmacion")
           } else {
 
+            //TODO  ver si es admin para mostrar links privados de crud
+
+
+            // 
             localStorage.setItem('token', res.token);
             this.router.navigate(['/shop']);
           }

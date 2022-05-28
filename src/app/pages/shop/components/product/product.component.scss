@@ -1,0 +1,16 @@
+
+
+.container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(412px, 1fr));
+    grid-template-rows: 2fr 0.3fr 2fr 1fr;
+    gap:1em;
+    padding: 10px;
+    color: black;
+}
+div:hover{
+    border: 1px red solid;
+}
+img{
+    max-width: 412px;
+}

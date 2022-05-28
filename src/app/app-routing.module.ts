@@ -17,6 +17,7 @@ import { SucursalesComponent } from './pages/sucursales/sucursales.component';
 //GUARDIANES
 import { AuthGuard } from './auth.guard'
 import { AdminGuard } from './admin.guard'
+import { ProductComponent } from './pages/shop/components';
 
 const routes: Routes = [
   {
@@ -51,6 +52,11 @@ const routes: Routes = [
     path: 'productoscrud',
     component: ProductosCrudComponent,
     canActivate: [AdminGuard]
+  },
+  {
+    path: 'producto/:id',
+    component: ProductComponent,
+    
   },
   {
     path: 'carrito',
