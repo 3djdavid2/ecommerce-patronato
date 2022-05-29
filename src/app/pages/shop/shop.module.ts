@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-
 import { ShopRoutingModule } from './shop-routing.module';
+
 import { ShopComponent } from './shop.component';
 import { FilterComponent } from './components/filter/filter.component';
 import { PaginatorComponent } from './components/paginator/paginator.component';

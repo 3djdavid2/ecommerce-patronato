@@ -1,0 +1,43 @@
+<mat-tab-group>
+    <mat-tab label="Mis Datos">
+        <div class="container">
+            <h1 class="titulo">Mis Datos</h1>
+
+            <form class="formulario" [formGroup]="formulario" (ngSubmit)="onSubmit()">
+
+
+                <label class="nombre">Nombre Completo</label>
+                <input AutoFocusInput class="input1" type="text" required formControlName="nombre">
+
+                <label class="rut">Rut</label>
+                <input  class="input2" type="text" required formControlName="rut">
+
+                <label class="direccion">Direccion</label>
+                <input  class="input3" type="text" required formControlName="direccion">
+
+                <label class="telefono">Teléfono</label>
+                <input class="input4" type="text" required formControlName="telefono" placeholder="Ej: +56 9 9999 9999">
+
+
+                <label class="email">E-mail</label>
+                <div class="email" *ngIf="f['email'].touched && f['email'].invalid"><br>
+                    <div *ngIf="f['email'].errors && f['email'].errors['pattern']">no válido.</div>
+                </div>
+                <input class="input5" type="email" required formControlName="email">      
+
+                <button  class="actualizar app-button" >Actualizar</button>
+
+
+            </form>
+            
+         
+
+        </div>
+    </mat-tab>
+
+
+    <mat-tab label="Mis Compras"> Content 2
+
+    </mat-tab>
+
+</mat-tab-group>

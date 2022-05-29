@@ -19,6 +19,7 @@ export class HeaderComponent implements OnInit {
     this.authService.getEmail$().subscribe(email => {
       this.pEmail = email
     })
+  
   }
   
   onClicked(): void {

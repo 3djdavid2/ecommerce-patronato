@@ -1,31 +1,16 @@
-<div class="container">
-
-    <div class="suc">
-        <h1 style="color: rgb(44, 44, 44);"> Sucursal 1 - Quilpué</h1>
-        <a style="color: rgb(44, 44, 44);" target="_blank"
-            href="https://www.google.cl/maps/place/Gonzalo+Bofill+695/@-33.0457651,-71.4432596,20z/data=!4m6!3m5!1s0x9689d91b6ab986e1:0x5477a3a2b11ca78d!4b1!8m2!3d-33.0449875!4d-71.443231?hl=es&authuser=0">
-            <h2>Dirección: Gonzalo Bofill de Caso 695 (Al lado de Esval calle Claudio Vicuña) </h2>
-            <h2>Fono: +569 4772 6871</h2>
+<div class="container" >
+    
+    <div class="suc" *ngFor="let tienda of tiendas" >
+        <h1> Sucursal {{tienda.id}} - {{tienda.lugar}}</h1>
+        <a target="_blank"
+            [href]="tienda.linkDireccion">
+            <h2>{{tienda.direccion}}</h2>
         </a>
-    </div>
+        <h2>Whatsapp: <br><a target="_blank" [href]="tienda.linkWhatsApp">Fono:{{tienda.WhatsApp}}</a></h2>
 
-    <div class="suc">
-        <h1 style="color: rgb(44, 44, 44);"> Sucursal 2 - Viña del Mar</h1>
-        <a style="color: rgb(44, 44, 44);" target="_blank"
-            href="https://www.google.cl/maps/place/Av.+Valpara%C3%ADso+791,+Vi%C3%B1a+del+Mar,+Valpara%C3%ADso/@-33.0252466,-71.5504851,19z/data=!4m13!1m7!3m6!1s0x9689de0a9560b671:0x4e3d009b9badd242!2sAv.+Valpara%C3%ADso+791,+Vi%C3%B1a+del+Mar,+Valpara%C3%ADso!3b1!8m2!3d-33.0252466!4d-71.5501598!3m4!1s0x9689de0a9560b671:0x4e3d009b9badd242!8m2!3d-33.0252466!4d-71.5501598?hl=es&authuser=0">
-            <h2>Dirección: Av. Valparaíso 791 (Al lado de Bomberos)</h2>
-            <h2>Fono: +569 6389 2893</h2>
-        </a>
     </div>
+  
 
-    <div class="suc">
-        <h1 style="color: rgb(44, 44, 44);"> Sucursal 3 - Quillota</h1>
-        <a style="color: rgb(44, 44, 44);" target="_blank"
-            href="https://www.google.cl/maps/place/Chacabuco+137,+Quillota,+Valpara%C3%ADso/@-32.878202,-71.2466532,17z/data=!3m1!4b1!4m5!3m4!1s0x9689cd9cb8c636a7:0x2a724f1346461aca!8m2!3d-32.878202!4d-71.2444645?hl=es-419&authuser=0">
-            <h2>Dirección: Chacabuco 137</h2>
-            <h2>Fono: +569 6868 2489</h2>
-        </a>
-    </div>
     <div class="horario">
         <h1>Horario de Atención continuado:</h1>
         <h2>Lunes a Jueves de 09:00 a 19:00 hrs</h2>

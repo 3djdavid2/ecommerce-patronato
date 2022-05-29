@@ -7,8 +7,10 @@ import { AuthService} from '../../services/auth.service'
   styleUrls: ['./heidi.component.scss']
 })
 export class HeidiComponent implements OnInit {
-
-  constructor(public authService: AuthService) { }
+ies!:any[];
+  constructor(public authService: AuthService) {
+    this.ies=[1,2,3]
+   }
 
   ngOnInit(): void {
   }

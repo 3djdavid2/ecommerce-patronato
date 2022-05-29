@@ -1,0 +1,122 @@
+@import "styles/colors";
+
+.titulo {
+    grid-area: titulo;
+}
+.nombre {
+    grid-area: nombre;
+}
+.telefono {
+    grid-area: telefono;
+}
+.rut {
+    grid-area: rut;
+}
+.email {
+    grid-area: email;
+}
+.direccion {
+    grid-area: direccion;
+}
+.actualizar {
+    grid-area: actualizar;
+}
+
+.input1 {
+    grid-area: input1;
+}
+.input2 {
+    grid-area: input2;
+}
+.input3 {
+    grid-area: input3;
+}
+.input4 {
+    grid-area: input4;
+}
+.input5 {
+    grid-area: input5;
+}
+
+.errorMail {
+    grid-area: errorMail;
+}
+
+input {
+    padding-left: 5px;
+}
+
+.container {
+    display: grid;
+    text-align: left;
+    margin: 10px;
+    margin-top: 20px;
+    padding-left: 10px;
+    padding-right: 20px;
+    border-radius: 3%;
+    max-width: 450px;
+    max-height: 900px;
+    grid-template-areas:
+        "titulo"
+        "formulario";
+    gap: 10px;
+    border-bottom: 50px;
+    background-color: $secondary-light;
+}
+.formulario {
+    display: grid;
+    grid-template-areas:
+        "nombre input1 input1 input1"
+        "rut input2 input2 input2"
+        "direccion input3 input3 input3"
+        "telefono input4 input4 input4"
+        "email input5 input5 input5"
+        ". . . ."
+        ". actualizar . ."
+        ". . . ."
+        ". . . .";
+    gap: 10px;
+}
+
+div {
+    font-family: "Arial Rounded MT Bold", "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode",
+        Verdana, sans-serif;
+    font-size: 12px;
+}
+input{
+    max-width: 600px;
+}
+input:focus {
+    outline: none !important;
+    border: 1px solid $primary-dark;
+    box-shadow: 0 0 1px #719ece;
+}
+.titulo {
+    padding-top: 20px;
+}
+
+.tituloFinal {
+    margin-bottom: 290px;
+}
+
+
+.app-button {
+    padding: 8px 20px;
+    background: transparent;
+    border-radius: 8px;
+    border: 2px solid $primary;
+    transition: 0.25s;
+    margin: 0 4px;
+  
+    &:hover, &:focus {
+      background: $primary;
+      border: 2px solid $primary;
+      color: $on-primary;
+    }
+  }
+
+@media screen and (max-width: 600px) {
+    .tituloFinal {
+        margin-bottom: 200px;
+    }
+}

@@ -29,7 +29,7 @@
     </div>
 
     <ng-template #loggedIn>
-      <h2 class="app-app" style="padding-top: 10px;">{{pEmail.email}}</h2>
+      <h2 routerLink="/perfil" class="app-app" style="padding-top: 10px;">{{pEmail.email}}</h2>
       <app-button (click)="authService.logout()">Cerrar Sesion</app-button>
     </ng-template>
 

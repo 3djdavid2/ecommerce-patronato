@@ -7,17 +7,16 @@ import { CarritoComponent } from './components/carrito/carrito.component'
 //PRODUCTOS CRUD ADMIN
 import { ProductosCrudComponent } from './components/productos-crud/productos-crud.component'
 
-//
 import { SignupComponent } from './components/signup/signup.component'
 import { SigninComponent } from './components/signin/signin.component'
 import { ContactoComponent } from '../../src/app/pages/contacto/contacto.component';
 import { HomeComponent } from '@app/pages/home/home.component';
-import { SucursalesComponent } from './pages/sucursales/sucursales.component';
 
 //GUARDIANES
 import { AuthGuard } from './auth.guard'
 import { AdminGuard } from './admin.guard'
 import { ProductComponent } from './pages/shop/components';
+import { SucursalesComponent } from './pages/sucursales/sucursales.component';
 
 const routes: Routes = [
   {
@@ -28,9 +27,14 @@ const routes: Routes = [
   {
     path: "",
     children: [
+      
       {
         path: 'shop',
         loadChildren: () => import('./pages/shop/shop.module').then(m => m.ShopModule)
+      },
+      {
+        path:'perfil',
+        loadChildren:()=> import('./pages/perfil/perfil.module').then(m=>m.PerfilModule)
       },
 
       {
@@ -56,7 +60,7 @@ const routes: Routes = [
   {
     path: 'producto/:id',
     component: ProductComponent,
-    
+
   },
   {
     path: 'carrito',
@@ -79,6 +83,7 @@ const routes: Routes = [
     path: 'sucursales',
     component: SucursalesComponent
   }
+
 ];
 
 @NgModule({

@@ -1,20 +1,21 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
-
 import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material.module'
+
 import { AppComponent } from './app.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { CarritoComponent } from './components/carrito/carrito.component';
 import { ProductosCrudComponent } from './components/productos-crud/productos-crud.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AuthGuard } from './auth.guard'
 import { TokenInterceptorService } from './services/token-interceptor.service'
 
-import { MaterialModule } from './material.module'
 //clase 64:
 import { MatNativeDateModule, MatDateFormats, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core'
 //--
@@ -33,6 +34,8 @@ import { MenuListComponent } from './components/menu-list/menu-list.component'
 import { HomeComponent } from './pages/home/home.component';
 import { ContactoComponent } from './pages/contacto/contacto.component';
 import { AutoFocusInputDirective } from './directivas/auto-focus-input.directive';
+import { SucursalesComponent } from './pages/sucursales/sucursales.component';
+
 
 
 
@@ -55,14 +58,16 @@ const APP_DATE_FORMATS: MatDateFormats = {
     SignupComponent,
     SigninComponent,
     CarritoComponent,
-    ProductosCrudComponent,
+    ProductosCrudComponent,    
     HeaderComponent,
     MenuListComponent,
     HomeComponent,
     ContactoComponent,
+    SucursalesComponent,
     AutoFocusInputDirective,    
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

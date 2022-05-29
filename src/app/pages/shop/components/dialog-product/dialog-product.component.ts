@@ -13,20 +13,6 @@ export class DialogProductComponent implements OnInit {
 
   }
 
-  seguirComprando() {
-
-  }
-
-  carrito() {
-
-  }
-
-  pagar() {
-
-  }
 
 
-
-
-  
 }
