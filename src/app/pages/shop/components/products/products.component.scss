@@ -15,7 +15,7 @@
     max-width: 400px;
 }
 
-.precio{
+.precio {
     font-size: 20px;
     text-align: right;
 }
@@ -24,4 +24,14 @@ mat-card img {
     padding: 5px;
     width: 400px;
     height: 73%;
+}
+p {
+    display: block;
+    max-width: 400px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+a{
+    text-decoration: underline;
 }

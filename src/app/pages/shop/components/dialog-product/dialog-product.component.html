@@ -8,10 +8,8 @@
 </mat-dialog-content>
 
 <mat-dialog-actions>
-    <app-button (click)="seguirComprando()">Seguir Comprando</app-button>
-    <app-button (click)="carrito()">Ver carrito</app-button>
-    <app-button (click)="pagar()">Pagar Ahora</app-button>
-
-   
+    <app-button mat-dialog-close routerLink="/shop">Seguir Comprando</app-button>
+    <app-button mat-dialog-close routerLink="/carrito">Ver carrito</app-button>
+    <app-button mat-dialog-close routerLink="/pago">Pagar Ahora</app-button>   
 
 </mat-dialog-actions>
