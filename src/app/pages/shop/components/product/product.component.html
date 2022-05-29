@@ -6,19 +6,21 @@
     </div>
 
     <div class="tiendas">
-        <h2>Disponible en</h2>
-        <ul>
-            <li>Quilpué</li>
-            <li>Viña del Mar</li>
-            <li>Quillota</li>
-        </ul>
+        <h2>Precio</h2>
+        <h2>${{product.precio | number}}.-(CLP)</h2>
+        <div class="cantidad">
+            <h2>Cantidad</h2>
+            <h2>{{cantidad}}</h2>          
+            <div class="material-icons" (click)="suma()" >add_circle</div>
+            <div class="material-icons" (click)="resta()">remove_circle</div>
+        </div>
     </div>
 
     <div class="pago">
         <h2>Pago</h2>
         <h3> {{product.nombre}}</h3>
-        <h2> ${{product.precio | number}}.-</h2>
-        <app-button>Añadir al carrito</app-button>
+        <h2> ${{total | number}}.-</h2>
+        <app-button (click)="openDialog()">Añadir al carrito</app-button>
     </div>
 
 

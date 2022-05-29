@@ -20,7 +20,7 @@ export class ShopComponent implements OnInit {
 
 
   constructor(
-    private getService: GetsService
+    private getService: GetsService    
   ) {   
    
   }
@@ -41,6 +41,7 @@ export class ShopComponent implements OnInit {
 
   }
 
+ 
 
   paginacion(pag: any) {
 

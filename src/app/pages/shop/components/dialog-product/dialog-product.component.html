@@ -8,9 +8,10 @@
 </mat-dialog-content>
 
 <mat-dialog-actions>
-    
-    <button>Seguir Comprando</button>
-    <button>Ver Carrito</button>
-    <button>Pagar ahora</button>
+    <app-button (click)="seguirComprando()">Seguir Comprando</app-button>
+    <app-button (click)="carrito()">Ver carrito</app-button>
+    <app-button (click)="pagar()">Pagar Ahora</app-button>
+
+   
 
 </mat-dialog-actions>

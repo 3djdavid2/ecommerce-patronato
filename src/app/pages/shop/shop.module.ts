@@ -20,8 +20,10 @@ import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { SelectModule } from '@app/shared/controls';
 
-import { MatPaginatorModule, MatPaginatorIntl} from '@angular/material/paginator';
+import { MatPaginatorModule, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatPaginationService } from '../../services/matpaginationtranslate.service';
+import { DialogProductComponent } from './components/dialog-product/dialog-product.component';
+import { MatDialogModule } from '@angular/material/dialog'
 
 @NgModule({
   declarations: [
@@ -30,13 +32,13 @@ import { MatPaginationService } from '../../services/matpaginationtranslate.serv
     PaginatorComponent,
     ProductComponent,
     ProductsComponent,
-    SearchComponent
+    SearchComponent,
+    DialogProductComponent
   ],
   imports: [
     CommonModule,
     HttpClientModule,
     ShopRoutingModule,
-   
     FormFieldModule,
     ButtonModule,
     SpinnerModule,
@@ -45,10 +47,15 @@ import { MatPaginationService } from '../../services/matpaginationtranslate.serv
     MatButtonModule,
     MatListModule,
     SelectModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatDialogModule
+
   ],
-  providers:
-     [{provide: MatPaginatorIntl, useClass: MatPaginationService}]
-  
+  providers: [
+    { provide: MatPaginatorIntl, useClass: MatPaginationService }
+  ],
+  bootstrap: [ShopComponent],
+  entryComponents: [DialogProductComponent]
+
 })
 export class ShopModule { }

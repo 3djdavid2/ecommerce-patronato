@@ -13,7 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav'
 import { MatListModule } from '@angular/material/list';
 import { MatRadioModule } from '@angular/material/radio';
-
+import { MatDialogModule } from '@angular/material/dialog'
 
 
 @NgModule({
@@ -31,7 +31,8 @@ import { MatRadioModule } from '@angular/material/radio';
         MatIconModule,
         MatListModule,
         MatSidenavModule,
-        MatRadioModule
+        MatRadioModule,
+        MatDialogModule
 
     ],
     exports: [
@@ -48,7 +49,8 @@ import { MatRadioModule } from '@angular/material/radio';
         MatIconModule,
         MatListModule,
         MatSidenavModule,
-        MatRadioModule
+        MatRadioModule,
+        MatDialogModule
     ]
 })
 
