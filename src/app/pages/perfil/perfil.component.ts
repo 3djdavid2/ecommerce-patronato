@@ -9,17 +9,18 @@ import { ContactService } from '../../services/contact.service';
   styleUrls: ['./perfil.component.scss']
 })
 export class PerfilComponent implements OnInit {
+
   formulario: FormGroup;
+  email:string;
+
   constructor(private router: Router) {
+    this.email="dj.vivanco@gmail.com"
     this.formulario = new FormGroup({
       nombre: new FormControl('', [this.letrasValidators]),
       rut: new FormControl(''),
       telefono: new FormControl(''),
       direccion: new FormControl(''),
-      email: new FormControl('', [Validators.required,
-      Validators.pattern(/^[0-9a-zA-Z]+([0-9a-zA-Z]*[-._+])*[0-9a-zA-Z]+@[0-9a-zA-Z]+([-.][0-9a-zA-Z]+)*([0-9a-zA-Z]*[.])[a-zA-Z]{2,6}$/)
-      ]),
-
+      
     })
   }
 
