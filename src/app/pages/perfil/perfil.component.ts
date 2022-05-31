@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ContactService } from '../../services/contact.service';
+import { AuthService } from '@app/services/auth.service';
+
+import { PerfilService } from '../../services/perfil.service';
 
 @Component({
   selector: 'app-perfil',
@@ -11,39 +13,85 @@ import { ContactService } from '../../services/contact.service';
 export class PerfilComponent implements OnInit {
 
   formulario: FormGroup;
-  email:string;
+  
+  pEmail: any;
 
-  constructor(private router: Router) {
-    this.email="dj.vivanco@gmail.com"
+  constructor(private router: Router,
+    private perfilService: PerfilService,
+    public authService: AuthService
+  ) {
+
+    this.pEmail = ''
+
     this.formulario = new FormGroup({
       nombre: new FormControl('', [this.letrasValidators]),
       rut: new FormControl(''),
-      telefono: new FormControl(''),
       direccion: new FormControl(''),
-      
+      telefono: new FormControl('')
     })
   }
 
   ngOnInit(): void {
 
+    this.authService.email$
+      .subscribe({
+        next: (res: any) => {
+          this.pEmail = res.email
+        },
+        error: (e: any) => {
+          console.log("el error es:", e)
+        },
+        complete: () => {
+          console.info('completed')
+        }
+      })
+
+    //pedir datos usando email y mostrarlos en formulario de actualizacion
+
+    this.perfilService.getMisDatos(this.pEmail)
+      .subscribe({
+        next: (res: any) => {
+          this.formulario.patchValue({
+            nombre: res.nombre,
+            rut: res.rut,
+            direccion: res.direccion,
+            telefono: res.telefono
+          })
+
+        },
+        error: (e: any) => {
+          console.log("el error es:", e)
+        },
+        complete: () => {
+          console.info('completed')
+        }
+      })
+
   }
 
-  onSubmit() {
-    console.log(this.formulario.value)
-    // this.contactService.sendMessage(this.formulario.value)
-    //   .subscribe({
-    //     next: (res: any) => {
 
-    //       alert(res.message)
-    //       this.router.navigate(['/home']);
-    //     },
-    //     error: (e: any) => {
-    //       console.log("el error es:", e)
-    //     },
-    //     complete: () => {
-    //       console.info('completed')
-    //     }
-    //   })
+  //Actualizar datos hacia bd
+  onSubmit() {
+
+    this.perfilService.putMisDatos(this.pEmail, this.formulario.value)
+      .subscribe({
+        next: (res: any) => {
+
+          if (res[0] === 1) {
+
+            alert("Actualizado ok")
+          } else {
+            alert("Problemas al actualizar datos")
+          }
+
+        },
+        error: (e: any) => {
+          console.log("el error es:", e)
+        },
+        complete: () => {
+          console.info('completed')
+        }
+      })
   }
 
   get f() {
@@ -53,7 +101,6 @@ export class PerfilComponent implements OnInit {
   letrasValidators(formControl: any) {
     const value = formControl.value;
     return null
-
   }
 
 }

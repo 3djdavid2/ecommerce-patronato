@@ -9,21 +9,32 @@ export class MenuListComponent implements OnInit {
 
   @Output() menuToggle = new EventEmitter<void>();
   pEmail!: any;
- 
+
   constructor(public authService: AuthService) {
     this.pEmail = ''
   }
 
   ngOnInit(): void {
     this.authService.isloggedIn();
-    this.authService.getEmail$().subscribe(email => {
-      this.pEmail = email
-    })
+
+    this.authService.email$
+      .subscribe({
+        next: (res: any) => {
+          this.pEmail = res.email
+        },
+        error: (e: any) => {
+          console.log("el error es:", e)
+        },
+        complete: () => {
+          console.info('completed')
+        }
+      })
+
   }
 
   closeMenu() {
     this.menuToggle.emit();
-    
+
   }
 
 }

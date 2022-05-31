@@ -8,20 +8,29 @@ import { AuthService } from '../../services/auth.service'
 })
 export class HeaderComponent implements OnInit {
 
-  pEmail!: any;
   @Output() menuClicked = new EventEmitter();
+  pEmail: any;
 
   constructor(public authService: AuthService) {
     this.pEmail = ''
   }
 
   ngOnInit(): void {
-    this.authService.getEmail$().subscribe(email => {
-      this.pEmail = email
-    })
-  
+    this.authService.email$
+      .subscribe({
+        next: (res: any) => {
+          this.pEmail = res.email
+        },
+        error: (e: any) => {
+          console.log("el error es:", e)
+        },
+        complete: () => {
+          console.info('completed')
+        }
+      })
+
   }
-  
+
   onClicked(): void {
     this.menuClicked.emit();
   }
