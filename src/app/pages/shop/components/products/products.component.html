@@ -28,7 +28,7 @@
            
             <mat-card-actions>
                 <app-button mat-button routerLink="/producto/{{product.id}}">Ver</app-button>
-                <app-button mat-button (click)="openDialog()">Añadir al carrito</app-button>
+                <app-button mat-button (click)="openDialog(product.id)">Añadir al carrito</app-button>
             </mat-card-actions>
 
         </mat-card>
