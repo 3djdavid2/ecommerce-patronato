@@ -57,4 +57,20 @@ export class AuthService {
     this.router.navigate(['/home'])
   }
 
+  existToken() {
+
+    let token = window.localStorage.getItem('token')
+
+    console.log(token)
+
+    if (token) {
+      let headers = new HttpHeaders({
+        'token': token
+      });
+      let options = { headers: headers };
+      return this.http.get<any>(this.URL + '/api/auth/compruebaToken', options)
+    }
+    return false
+  }
+
 }

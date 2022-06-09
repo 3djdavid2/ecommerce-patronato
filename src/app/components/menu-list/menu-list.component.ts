@@ -15,11 +15,13 @@ export class MenuListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     this.authService.isloggedIn();
 
     this.authService.email$
       .subscribe({
         next: (res: any) => {
+          
           this.pEmail = res.email
         },
         error: (e: any) => {

@@ -12,7 +12,7 @@
 
                 <mat-form-field class="full-width" color="primary">
 
-                    <input class="campos" type="email" id="email" matInput placeholder="Email" formControlName="email">
+                    <input AutoFocusInput class="campos" type="email" id="email" matInput placeholder="Email" formControlName="email">
 
                     <div class="error" *ngIf="f['email'].touched && f['email'].invalid">
                         <div *ngIf="formRegistro.controls['email'].errors && formRegistro.controls['email'].errors['required']">Email es requerido.</div>

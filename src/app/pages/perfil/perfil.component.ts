@@ -47,10 +47,14 @@ export class PerfilComponent implements OnInit {
       })
 
     //pedir datos usando email y mostrarlos en formulario de actualizacion
+    const token = this.authService.getToken()
 
-    this.perfilService.getMisDatos(this.pEmail)
+    this.perfilService.getMisDatos(this.pEmail, token)
       .subscribe({
         next: (res: any) => {
+
+          let iatToken = res.iatToken;
+
           this.formulario.patchValue({
             nombre: res.nombre,
             rut: res.rut,

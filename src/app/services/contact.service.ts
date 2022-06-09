@@ -19,6 +19,6 @@ export class ContactService {
 
   sendMessage({nombre, telefono, email, mensaje}:Contacto){
     const bodyRequest = {nombre, telefono, email, mensaje}        
-    return this.http.post<any>(this.URI, bodyRequest);
+    return this.http.post<any>(this.URI + '/api/send-email', bodyRequest);
   }
 }
