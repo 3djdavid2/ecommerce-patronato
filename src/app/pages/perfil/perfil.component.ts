@@ -32,6 +32,8 @@ export class PerfilComponent implements OnInit {
 
   ngOnInit(): void {
 
+    const token = this.authService.verifyToken()
+    
     this.authService.email$
       .subscribe({
         next: (res: any) => {
@@ -46,7 +48,6 @@ export class PerfilComponent implements OnInit {
       })
 
     //pedir datos usando email y mostrarlos en formulario de actualizacion
-    const token = this.authService.getToken()
 
     this.perfilService.getMisDatos(this.pEmail)
       .subscribe({

@@ -23,7 +23,7 @@
     </a>
 
    
-    <div *ngIf="!authService.isloggedIn(); else loggedIn">
+    <div *ngIf="!authService.verifyToken(); else loggedIn">
       <app-button routerLink="/signin">Login</app-button>
       <app-button routerLink="/signup">Registrar</app-button>
     </div>

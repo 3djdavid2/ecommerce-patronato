@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService} from './services/auth.service'
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,9 +11,16 @@ export class AppComponent implements OnInit {
   fecha = new Intl.DateTimeFormat('es-ES', { dateStyle: 'full', timeStyle: 'short' }).format(this.f);
 
 
-  constructor() { }
+  constructor(private authService: AuthService) {
 
-  ngOnInit() { }
+   }
+
+  ngOnInit() { 
+
+      this.authService.logout();
+    
+   
+  }
 
 
 }

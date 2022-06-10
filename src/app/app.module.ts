@@ -13,7 +13,7 @@ import { SigninComponent } from './components/signin/signin.component';
 import { CarritoComponent } from './components/carrito/carrito.component';
 import { ProductosCrudComponent } from './components/productos-crud/productos-crud.component';
 
-import { AuthGuard } from './auth.guard'
+import { AuthGuard } from '../app/guards/auth/auth.guard'
 import { TokenInterceptorService } from './services/token-interceptor.service'
 
 //clase 64:

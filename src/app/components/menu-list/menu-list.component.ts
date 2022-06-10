@@ -16,7 +16,7 @@ export class MenuListComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.authService.isloggedIn();
+    this.authService.verifyToken();
 
     this.authService.email$
       .subscribe({

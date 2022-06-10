@@ -13,7 +13,7 @@ import { ContactoComponent } from '../../src/app/pages/contacto/contacto.compone
 import { HomeComponent } from '@app/pages/home/home.component';
 
 //GUARDIANES
-import { AuthGuard } from './auth.guard'
+import { AuthGuard } from '../app/guards/auth/auth.guard'
 import { ProductComponent } from './pages/shop/components';
 import { SucursalesComponent } from './pages/sucursales/sucursales.component';
 import { RoleGuard } from './guards';

@@ -44,22 +44,12 @@ export class AuthService {
   }
 
 
-
-  //Comprobar si existe un token
-  isloggedIn() {
-    return !!window.localStorage.getItem('token');
-  }
-
-  getToken() {
-    return window.localStorage.getItem('token')
-  }
-
   logout() {
     localStorage.removeItem('token');
     this.router.navigate(['/home'])
   }
 
-  existToken(): any {
+  verifyToken(): any {
 
     const token:any = window.localStorage.getItem('token')
 

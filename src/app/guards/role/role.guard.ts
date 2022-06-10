@@ -21,7 +21,7 @@ export class RoleGuard implements CanActivate, CanActivateChild, CanLoad {
 
     const roleId = decode(token as string) as any;
 
-    if (!this.authService.existToken() || roleId.role !== expectedRole) {
+    if (!this.authService.verifyToken() || roleId.role !== expectedRole) {
       console.log("Usuario no es admin")
       return false
     }
