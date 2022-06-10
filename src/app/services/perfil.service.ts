@@ -17,12 +17,9 @@ export class PerfilService {
 
   }
 
-  getMisDatos(email: any, token: any) {
-    let headers = new HttpHeaders({
-      'token': token
-    });
-    let options = { headers: headers };
-    return this.http.get<any>(this.URL + `/api/perfil/${email}`, options)
+  getMisDatos(email: any) {
+ 
+    return this.http.get<any>(this.URL + `/api/perfil/${email}`)
   }
 
   putMisDatos(email: any, dataBody: any) {

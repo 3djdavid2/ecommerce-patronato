@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Router } from '@angular/router'
 import { environment } from '../../environments/environment'
 import { BehaviorSubject } from 'rxjs';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ export class AuthService {
   email$ = this.emailSource.asObservable();
 
   constructor(
+    private jwtHelper: JwtHelperService,
     private http: HttpClient,
     private router: Router
   ) {
@@ -57,20 +59,15 @@ export class AuthService {
     this.router.navigate(['/home'])
   }
 
-  existToken() {
+  existToken(): any {
 
-    let token = window.localStorage.getItem('token')
+    const token:any = window.localStorage.getItem('token')
 
-    console.log(token)
-
-    if (token) {
-      let headers = new HttpHeaders({
-        'token': token
-      });
-      let options = { headers: headers };
-      return this.http.get<any>(this.URL + '/api/auth/compruebaToken', options)
+    if (this.jwtHelper.isTokenExpired(token) || !localStorage.getItem('token')) {
+      return false;
     }
-    return false
-  }
+    return true;
 
+  
+  }
 }

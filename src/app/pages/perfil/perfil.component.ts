@@ -13,8 +13,7 @@ import { PerfilService } from '../../services/perfil.service';
 export class PerfilComponent implements OnInit {
 
   formulario: FormGroup;
-  
-  pEmail: any;
+   pEmail: any;
 
   constructor(private router: Router,
     private perfilService: PerfilService,
@@ -49,12 +48,10 @@ export class PerfilComponent implements OnInit {
     //pedir datos usando email y mostrarlos en formulario de actualizacion
     const token = this.authService.getToken()
 
-    this.perfilService.getMisDatos(this.pEmail, token)
+    this.perfilService.getMisDatos(this.pEmail)
       .subscribe({
         next: (res: any) => {
-
-          let iatToken = res.iatToken;
-
+         
           this.formulario.patchValue({
             nombre: res.nombre,
             rut: res.rut,
@@ -65,6 +62,9 @@ export class PerfilComponent implements OnInit {
         },
         error: (e: any) => {
           console.log("el error es:", e)
+          // this.TokenExpirado = true
+          // alert("Sesión finalizada, vuelva a ingresar porfavor")
+          // this.authService.logout();
         },
         complete: () => {
           console.info('completed')
@@ -76,26 +76,29 @@ export class PerfilComponent implements OnInit {
 
   //Actualizar datos hacia bd
   onSubmit() {
+    
 
-    this.perfilService.putMisDatos(this.pEmail, this.formulario.value)
-      .subscribe({
-        next: (res: any) => {
+      this.perfilService.putMisDatos(this.pEmail, this.formulario.value)
+        .subscribe({
+          next: (res: any) => {
 
-          if (res[0] === 1) {
+            if (res[0] === 1) {
 
-            alert("Actualizado ok")
-          } else {
-            alert("Problemas al actualizar datos")
+              alert("Actualizado ok")
+              
+            } else {
+              alert("Problemas al actualizar datos")
+            }
+
+          },
+          error: (e: any) => {
+            console.log("el error es:", e)
+          },
+          complete: () => {
+            console.info('completed')
           }
-
-        },
-        error: (e: any) => {
-          console.log("el error es:", e)
-        },
-        complete: () => {
-          console.info('completed')
-        }
-      })
+        })
+    
   }
 
   get f() {

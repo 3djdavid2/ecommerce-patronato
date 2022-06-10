@@ -36,8 +36,9 @@ import { ContactoComponent } from './pages/contacto/contacto.component';
 import { AutoFocusInputDirective } from './directivas/auto-focus-input.directive';
 import { SucursalesComponent } from './pages/sucursales/sucursales.component';
 
-
-
+//https://www.youtube.com/watch?v=vTtcuIZIvAA Canal de kevin Davila
+import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt'; // npm i --save @auth0/angular-jwt
+//
 
 
 const APP_DATE_FORMATS: MatDateFormats = {
@@ -82,6 +83,8 @@ const APP_DATE_FORMATS: MatDateFormats = {
    
   ],
   providers: [
+    {provide: JWT_OPTIONS, useValue:JWT_OPTIONS},
+    JwtHelperService,
     AuthGuard, 
     {
       provide: HTTP_INTERCEPTORS,

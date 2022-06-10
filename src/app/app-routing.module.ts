@@ -14,9 +14,9 @@ import { HomeComponent } from '@app/pages/home/home.component';
 
 //GUARDIANES
 import { AuthGuard } from './auth.guard'
-import { AdminGuard } from './admin.guard'
 import { ProductComponent } from './pages/shop/components';
 import { SucursalesComponent } from './pages/sucursales/sucursales.component';
+import { RoleGuard } from './guards';
 
 const routes: Routes = [
   {
@@ -34,7 +34,8 @@ const routes: Routes = [
       },
       {
         path:'perfil',
-        loadChildren:()=> import('./pages/perfil/perfil.module').then(m=>m.PerfilModule)
+        loadChildren:()=> import('./pages/perfil/perfil.module').then(m=>m.PerfilModule),
+        canActivate:[AuthGuard]
       },
       {
         path: 'demo',
@@ -50,7 +51,8 @@ const routes: Routes = [
   {
     path: 'productoscrud',
     component: ProductosCrudComponent,
-    canActivate: [AdminGuard]
+    canActivate: [RoleGuard],
+    data:{expectedRole:'admin'},
   },
   {
     path: 'producto/:id',
