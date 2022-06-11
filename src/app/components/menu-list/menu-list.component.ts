@@ -16,21 +16,23 @@ export class MenuListComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.authService.verifyToken();
+    const token = this.authService.verifyToken()
+    if (token) {
 
-    this.authService.email$
-      .subscribe({
-        next: (res: any) => {
-          
-          this.pEmail = res.email
-        },
-        error: (e: any) => {
-          console.log("el error es:", e)
-        },
-        complete: () => {
-          console.info('completed')
-        }
-      })
+      this.authService.email$
+        .subscribe({
+          next: (res: any) => {
+
+            this.pEmail = res.email
+          },
+          error: (e: any) => {
+            console.log("el error es:", e)
+          },
+          complete: () => {
+            console.info('completed')
+          }
+        })
+    }
 
   }
 

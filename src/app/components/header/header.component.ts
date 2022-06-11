@@ -10,12 +10,15 @@ export class HeaderComponent implements OnInit {
 
   @Output() menuClicked = new EventEmitter();
   pEmail: any;
+  admin!: boolean;
 
   constructor(public authService: AuthService) {
     this.pEmail = ''
   }
 
   ngOnInit(): void {
+
+
     this.authService.email$
       .subscribe({
         next: (res: any) => {
@@ -28,6 +31,7 @@ export class HeaderComponent implements OnInit {
           console.info('completed')
         }
       })
+
 
   }
 

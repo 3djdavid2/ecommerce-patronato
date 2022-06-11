@@ -5,6 +5,7 @@ import { DialogProductComponent } from '../dialog-product/dialog-product.compone
 import { Product } from '../../store/list';
 import { PerfilService } from '@app/services/perfil.service';
 import { AuthService } from '@app/services/auth.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -21,60 +22,70 @@ export class ProductsComponent implements OnInit {
   constructor(
     private dialog: MatDialog,
     private perfilService: PerfilService,
-    public authService: AuthService
+    public authService: AuthService,
+    private route: Router
   ) {
     this.pEmail = ''
 
   }
 
-  ngOnInit(): void { 
-  
+  ngOnInit(): void {
+
   }
 
   openDialog(id: number) {
-   
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = false;
-    dialogConfig.autoFocus = true;
-    this.dialog.open(DialogProductComponent, dialogConfig);
+    if (this.authService.verifyToken()) {
+      const dialogConfig = new MatDialogConfig();
+      dialogConfig.disableClose = false;
+      dialogConfig.autoFocus = true;
+      this.dialog.open(DialogProductComponent, dialogConfig);
 
-    this.productId = id
-    this.createCarrito();
+      this.productId = id
+      this.createCarrito();
+    }else{
+
+      this.route.navigate(['signin'])
+    }
   }
 
-  createCarrito() { 
+  createCarrito() {
+
 
     this.getEmailservice();
 
-    this.perfilService.createCarrito(this.pEmail,this.productId, 1)
-    .subscribe({
-      next: (res: any) => {
-        console.log("el res es:,", res)
-        
-      },
-      error: (e: any) => {
-        console.log("el error es:", e)
-      },
-      complete: () => {
-        console.info('completed')
-      }
-    }) 
+    this.perfilService.createCarrito(this.pEmail, this.productId, 1)
+      .subscribe({
+        next: (res: any) => {
+          console.log("servicio createCarrito de products.comp es:,", res)
+
+        },
+        error: (e: any) => {
+          console.log("el error es:", e)
+        },
+        complete: () => {
+          console.info('completed')
+        }
+      })
+
+
+
+
   }
 
-  getEmailservice(){
+  getEmailservice() {
     this.authService.email$
-    .subscribe({
-      next: (res: any) => {
-        console.log("el res es:,", res)
-        this.pEmail = res.email
-      },
-      error: (e: any) => {
-        console.log("el error es:", e)
-      },
-      complete: () => {
-        console.info('completed')
-      }
-    }) 
+      .subscribe({
+        next: (res: any) => {
+          console.log("el res es:,", res)
+          this.pEmail = res.email
+        },
+        error: (e: any) => {
+          console.log("el error es:", e)
+        },
+        complete: () => {
+          console.info('completed')
+        }
+      })
   }
 
 

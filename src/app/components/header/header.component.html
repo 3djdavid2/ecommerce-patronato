@@ -6,7 +6,7 @@
         <span class="material-icons md-36 estiloIcon">menu</span>
       </a>
     </div>
-   
+
   </div>
 
   <div class="header__navigation" fxHide.xs fxHide.sm>
@@ -14,6 +14,11 @@
     <a class="app-a" routerLink="shop" routerLinkActive="app-a_active">Tienda</a>
     <a class="app-a" routerLink="contacto" routerLinkActive="app-a_active">Contacto</a>
     <a class="app-a" routerLink="sucursales" routerLinkActive="app-a_active">Sucursales</a>
+
+    <span *ngIf="(authService.role$ | async) === 'admin'">
+      <a class="app-a" routerLink="admin" routerLinkActive="app-a_active">Administrador</a>
+    </span>
+
   </div>
 
   <div class="header__buttons" fxHide.xs fxHide.sm>
@@ -22,7 +27,7 @@
       <span class="material-icons md-36 estiloIcon">shopping_cart</span>
     </a>
 
-   
+
     <div *ngIf="!authService.verifyToken(); else loggedIn">
       <app-button routerLink="/signin">Login</app-button>
       <app-button routerLink="/signup">Registrar</app-button>
@@ -34,7 +39,7 @@
     </ng-template>
 
   </div>
- 
+
 
 
 </div>

@@ -11,7 +11,6 @@ import { AppComponent } from './app.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { CarritoComponent } from './components/carrito/carrito.component';
-import { ProductosCrudComponent } from './components/productos-crud/productos-crud.component';
 
 import { AuthGuard } from '../app/guards/auth/auth.guard'
 import { TokenInterceptorService } from './services/token-interceptor.service'
@@ -59,7 +58,6 @@ const APP_DATE_FORMATS: MatDateFormats = {
     SignupComponent,
     SigninComponent,
     CarritoComponent,
-    ProductosCrudComponent,    
     HeaderComponent,
     MenuListComponent,
     HomeComponent,

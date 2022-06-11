@@ -4,9 +4,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 //CARRITO CLIENTE INSCRITO
 import { CarritoComponent } from './components/carrito/carrito.component'
-//PRODUCTOS CRUD ADMIN
-import { ProductosCrudComponent } from './components/productos-crud/productos-crud.component'
-
 import { SignupComponent } from './components/signup/signup.component'
 import { SigninComponent } from './components/signin/signin.component'
 import { ContactoComponent } from '../../src/app/pages/contacto/contacto.component';
@@ -29,6 +26,12 @@ const routes: Routes = [
     children: [
       
       {
+        path:'admin',
+        loadChildren:()=> import('./pages/admin/admin.module').then(m=>m.AdminModule),
+        canActivate:[RoleGuard],
+        data:{expectedRole:'admin'}
+      },
+      {
         path: 'shop',
         loadChildren: () => import('./pages/shop/shop.module').then(m => m.ShopModule)
       },
@@ -48,12 +51,6 @@ const routes: Routes = [
     component: HomeComponent
   },
 
-  {
-    path: 'productoscrud',
-    component: ProductosCrudComponent,
-    canActivate: [RoleGuard],
-    data:{expectedRole:'admin'},
-  },
   {
     path: 'producto/:id',
     component: ProductComponent,

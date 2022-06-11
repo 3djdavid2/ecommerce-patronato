@@ -13,7 +13,7 @@ import { PerfilService } from '../../services/perfil.service';
 export class PerfilComponent implements OnInit {
 
   formulario: FormGroup;
-   pEmail: any;
+  pEmail: any;
 
   constructor(private router: Router,
     private perfilService: PerfilService,
@@ -33,64 +33,12 @@ export class PerfilComponent implements OnInit {
   ngOnInit(): void {
 
     const token = this.authService.verifyToken()
-    
-    this.authService.email$
-      .subscribe({
-        next: (res: any) => {
-          this.pEmail = res.email
-        },
-        error: (e: any) => {
-          console.log("el error es:", e)
-        },
-        complete: () => {
-          console.info('completed')
-        }
-      })
+    if (token) {
 
-    //pedir datos usando email y mostrarlos en formulario de actualizacion
-
-    this.perfilService.getMisDatos(this.pEmail)
-      .subscribe({
-        next: (res: any) => {
-         
-          this.formulario.patchValue({
-            nombre: res.nombre,
-            rut: res.rut,
-            direccion: res.direccion,
-            telefono: res.telefono
-          })
-
-        },
-        error: (e: any) => {
-          console.log("el error es:", e)
-          // this.TokenExpirado = true
-          // alert("Sesión finalizada, vuelva a ingresar porfavor")
-          // this.authService.logout();
-        },
-        complete: () => {
-          console.info('completed')
-        }
-      })
-
-  }
-
-
-  //Actualizar datos hacia bd
-  onSubmit() {
-    
-
-      this.perfilService.putMisDatos(this.pEmail, this.formulario.value)
+      this.authService.email$
         .subscribe({
           next: (res: any) => {
-
-            if (res[0] === 1) {
-
-              alert("Actualizado ok")
-              
-            } else {
-              alert("Problemas al actualizar datos")
-            }
-
+            this.pEmail = res.email
           },
           error: (e: any) => {
             console.log("el error es:", e)
@@ -99,7 +47,61 @@ export class PerfilComponent implements OnInit {
             console.info('completed')
           }
         })
-    
+
+      //pedir datos usando email y mostrarlos en formulario de actualizacion
+
+      this.perfilService.getMisDatos(this.pEmail)
+        .subscribe({
+          next: (res: any) => {
+
+            this.formulario.patchValue({
+              nombre: res.nombre,
+              rut: res.rut,
+              direccion: res.direccion,
+              telefono: res.telefono
+            })
+
+          },
+          error: (e: any) => {
+            console.log("el error es:", e)
+            // this.TokenExpirado = true
+            // alert("Sesión finalizada, vuelva a ingresar porfavor")
+            // this.authService.logout();
+          },
+          complete: () => {
+            console.info('completed')
+          }
+        })
+    }
+
+  }
+
+
+  //Actualizar datos hacia bd
+  onSubmit() {
+
+
+    this.perfilService.putMisDatos(this.pEmail, this.formulario.value)
+      .subscribe({
+        next: (res: any) => {
+
+          if (res[0] === 1) {
+
+            alert("Actualizado ok")
+
+          } else {
+            alert("Problemas al actualizar datos")
+          }
+
+        },
+        error: (e: any) => {
+          console.log("el error es:", e)
+        },
+        complete: () => {
+          console.info('completed')
+        }
+      })
+
   }
 
   get f() {

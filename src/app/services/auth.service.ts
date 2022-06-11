@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Router } from '@angular/router'
 import { environment } from '../../environments/environment'
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import jwtDecode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,9 @@ export class AuthService {
 
   emailSource = new BehaviorSubject(null);
   email$ = this.emailSource.asObservable();
+
+  roleSource = new BehaviorSubject(null);
+  role$ = this.roleSource.asObservable();
 
   constructor(
     private jwtHelper: JwtHelperService,
@@ -49,6 +53,12 @@ export class AuthService {
     this.router.navigate(['/home'])
   }
 
+  roleToken(token:any):Observable<any>{    
+    const roleId = jwtDecode(token as string) as any;
+    this.roleSource.next(roleId.role)
+    return roleId
+  }
+
   verifyToken(): any {
 
     const token:any = window.localStorage.getItem('token')
@@ -56,8 +66,6 @@ export class AuthService {
     if (this.jwtHelper.isTokenExpired(token) || !localStorage.getItem('token')) {
       return false;
     }
-    return true;
-
-  
+    return true;  
   }
 }
