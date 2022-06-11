@@ -23,7 +23,7 @@ export class ProductsComponent implements OnInit {
     private dialog: MatDialog,
     private perfilService: PerfilService,
     public authService: AuthService,
-    private route: Router
+    private router: Router
   ) {
     this.pEmail = ''
 
@@ -44,7 +44,7 @@ export class ProductsComponent implements OnInit {
       this.createCarrito();
     }else{
 
-      this.route.navigate(['signin'])
+      this.router.navigate(['signin'])
     }
   }
 

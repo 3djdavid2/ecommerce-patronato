@@ -16,10 +16,7 @@ export class MenuListComponent implements OnInit {
 
   ngOnInit(): void {
 
-    const token = this.authService.verifyToken()
-    if (token) {
-
-      this.authService.email$
+          this.authService.email$
         .subscribe({
           next: (res: any) => {
 
@@ -32,7 +29,7 @@ export class MenuListComponent implements OnInit {
             console.info('completed')
           }
         })
-    }
+    
 
   }
 

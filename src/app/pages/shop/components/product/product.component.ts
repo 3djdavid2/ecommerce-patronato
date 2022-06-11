@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { GetsService } from '@app/services/gets.service';
-import { ActivatedRoute, ParamMap } from '@angular/router'
+import { ActivatedRoute, ParamMap, Router } from '@angular/router'
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DialogProductComponent } from '../dialog-product/dialog-product.component';
+import { AuthService } from '@app/services/auth.service';
 
 
 @Component({
@@ -18,10 +19,13 @@ export class ProductComponent implements OnInit {
   precio!: number;
   total: number;
 
-  constructor(private dialog: MatDialog,
+  constructor(
+    private dialog: MatDialog,
     private route: ActivatedRoute,
-    private getService: GetsService) {
-
+    private router: Router,
+    private getService: GetsService,
+    private authService: AuthService
+  ) {
     this.product = ''
     this.total = 0
     this.cantidad = 1
@@ -37,11 +41,17 @@ export class ProductComponent implements OnInit {
 
   }
 
-  openDialog(){
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = false;
-    dialogConfig.autoFocus = true;
-    this.dialog.open(DialogProductComponent, dialogConfig);
+  openDialog() {
+    if (this.authService.verifyToken()) {
+      const dialogConfig = new MatDialogConfig();
+      dialogConfig.disableClose = false;
+      dialogConfig.autoFocus = true;
+      this.dialog.open(DialogProductComponent, dialogConfig);
+
+    } else {
+
+      this.router.navigate(['signin'])
+    }
   }
 
 

@@ -51,6 +51,9 @@ input.ng-invalid.ng-touched {
     height: 30px;
 }
 
-input:hover{
-    cursor:auto;
+input {
+    padding-left: 5px;
+    &:hover {
+        cursor: auto;
+    }
 }
