@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment'
-import { Subject } from 'rxjs';
+import { map, Subject } from 'rxjs';
 
 
 @Injectable({
@@ -29,8 +29,14 @@ export class GetsService {
     return this.http.get<any>(this.URL + `/api/Product/count`)
   }
 
+  //obtener todos los productos y muestra por pagina
   getAllByPage(pageIndex: number, pageSize: number) {
-    return this.http.get<any>(this.URL + `/api/Product?pageIndex=${pageIndex}&pageSize=${pageSize}`)
+
+   let resp= this.http.get<any>(this.URL + `/api/Product?pageIndex=${pageIndex}&pageSize=${pageSize}`)
+        
+   return resp
+
+   
   }
 
   getMarcas() {

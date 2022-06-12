@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ControlItem } from '@app/models/frontend';
 import { GetsService } from '@app/services/gets.service';
+import { map } from 'rxjs';
 @Component({
   selector: 'app-shop',
   templateUrl: './shop.component.html',
@@ -12,17 +13,17 @@ export class ShopComponent implements OnInit {
   marcas!: ControlItem[];
   categorias!: ControlItem[];
 
-  pageSize: number=4;
-  totProd: number=0;
+  pageSize: number = 4;
+  totProd: number = 0;
 
-  lowValue:number=0;
-  highValue:number=0;
+  lowValue: number = 0;
+  highValue: number = 0;
 
 
   constructor(
-    private getService: GetsService    
-  ) {   
-   
+    private getService: GetsService
+  ) {
+
   }
 
   ngOnInit(): void {
@@ -41,17 +42,19 @@ export class ShopComponent implements OnInit {
 
   }
 
- 
+
 
   paginacion(pag: any) {
 
-    this.lowValue= pag.lowValue
-    this.highValue= pag.highValue
+    this.lowValue = pag.lowValue
+    this.highValue = pag.highValue
 
-    this.getService.getAllByPage(this.lowValue,this.highValue)
+    this.getService.getAllByPage(this.lowValue, this.highValue)
+   
       .subscribe({
-        next: (res) => {
+        next: (res:any) => {
           this.products = res.rows;
+          console.log(this.products)
         },
         error: (e) => {
           console.log(e);
@@ -66,7 +69,7 @@ export class ShopComponent implements OnInit {
   GetProductos(index: number, cant: number) {
     this.getService.getAllByPage(index, cant)
       .subscribe({
-        next: (res) => {
+        next: (res:any) => {
           this.products = res.rows;
         },
         error: (e) => {

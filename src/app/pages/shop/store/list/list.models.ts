@@ -1,5 +1,6 @@
 export interface Product {
     id: number;
+    estado: string;
     nombre: string;
     categoria: string;
     categoriaId:number;
@@ -10,7 +11,8 @@ export interface Product {
     codigo: number;
     precio: number;
     cantidad: number;
-    estado: boolean;
+    unidadMedida: string;
+    unidMinVenta: number;
     createdAt: Date;
     updatedAt: Date;
 }

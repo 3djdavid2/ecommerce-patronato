@@ -13,7 +13,7 @@
     <a class="app-a" routerLink="home" routerLinkActive="app-a_active">Home</a>
     <a class="app-a" routerLink="shop" routerLinkActive="app-a_active">Tienda</a>
     <a class="app-a" routerLink="contacto" routerLinkActive="app-a_active">Contacto</a>
-    <a class="app-a" routerLink="sucursales" routerLinkActive="app-a_active">Sucursales</a>
+    <app-a class="app-a" routerLink="sucursales" routerLinkActive="app-a_active">Sucursales</app-a>
 
     <span *ngIf="(authService.role$ | async) === 'admin'">
       <a class="app-a" routerLink="admin" routerLinkActive="app-a_active">Administrador</a>
@@ -23,9 +23,9 @@
 
   <div class="header__buttons" fxHide.xs fxHide.sm>
 
-    <a class="app-a" routerLink="carrito" routerLinkActive="app-a_active">
+    <app-a class="app-a" routerLink="carrito" routerLinkActive="app-a_active">
       <span class="material-icons md-36 estiloIcon">shopping_cart</span>
-    </a>
+    </app-a>
 
 
     <div *ngIf="!authService.verifyToken(); else loggedIn">
@@ -33,12 +33,12 @@
       <app-button routerLink="/signup">Registrar</app-button>
     </div>
 
-    <ng-template #loggedIn>
-      <h2 routerLink="/perfil" class="app-app" style="padding-top: 10px;">{{pEmail}}</h2>
-      <app-button (click)="authService.logout()">Cerrar Sesion</app-button>
-    </ng-template>
 
   </div>
+  <ng-template #loggedIn>
+    <h2 routerLink="/perfil" class="app-a" style="padding-top: 10px;">{{pEmail}}</h2>
+    <app-button (click)="authService.logout()">Cerrar Sesion</app-button>
+  </ng-template>
 
 
 

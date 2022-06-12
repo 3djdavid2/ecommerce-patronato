@@ -3,7 +3,7 @@
 <ul class="cards">
 
     <li class="cards__item" *ngFor="let product of products">
-        <mat-card class="mat-class">
+        <mat-card class="mat-class" *ngIf="product.estado !== 'inactivo'">
 
             <mat-card-header>
                 <mat-card-title>{{product.nombre}}</mat-card-title>

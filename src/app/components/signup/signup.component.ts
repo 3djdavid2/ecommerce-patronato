@@ -63,9 +63,10 @@ export class SignupComponent {
 
     await new Promise(resolve => {
       this.loading = true
-      setTimeout(resolve, 3000)
+      setTimeout(resolve, 6000)
 
     });
+
     this.loading = false;
 
     this.authService.signUp(this.formRegistro.value)
@@ -73,18 +74,18 @@ export class SignupComponent {
         next: (res) => {
 
           if (res.token === 'tosignin') {
+
             alert("Ya existe email, se reenviará a Login");
             this.router.navigate(['/signin']);
 
           } else if (res.token === 'tomailconfirm') {
             alert("se enviará un email de confirmacion")
+            this.router.navigate(['/shop']);
           } else {
 
             localStorage.setItem('token', res.token);
             this.router.navigate(['/shop']);
           }
-
-
 
         },
         error: (e) => {

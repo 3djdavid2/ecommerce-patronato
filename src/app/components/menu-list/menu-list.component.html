@@ -20,7 +20,7 @@
 
   <ng-template #loggedIn>
 
-    <a routerLink="/perfil" (click)="closeMenu()" class="app-app" style="padding-top: 10px;">{{pEmail}}</a>
+    <a mat-list-item routerLink="/perfil" (click)="closeMenu()" >{{pEmail}}</a>
 
     <a mat-list-item routerLink="/" (click)="closeMenu()">
       <mat-icon>logout</mat-icon>
