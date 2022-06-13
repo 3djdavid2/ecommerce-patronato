@@ -50,7 +50,7 @@ export class PerfilComponent implements OnInit {
 
       //pedir datos usando email y mostrarlos en formulario de actualizacion
 
-      this.perfilService.getMisDatos(this.pEmail)
+      this.perfilService.getMisDatos()
         .subscribe({
           next: (res: any) => {
 
@@ -60,13 +60,9 @@ export class PerfilComponent implements OnInit {
               direccion: res.direccion,
               telefono: res.telefono
             })
-
           },
           error: (e: any) => {
-            console.log("el error es:", e)
-            // this.TokenExpirado = true
-            // alert("Sesión finalizada, vuelva a ingresar porfavor")
-            // this.authService.logout();
+            console.log("el error es:", e)          
           },
           complete: () => {
             console.info('completed')

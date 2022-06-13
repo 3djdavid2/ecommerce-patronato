@@ -50,11 +50,11 @@ export class ShopComponent implements OnInit {
     this.highValue = pag.highValue
 
     this.getService.getAllByPage(this.lowValue, this.highValue)
-   
+
       .subscribe({
-        next: (res:any) => {
+        next: (res: any) => {
           this.products = res.rows;
-          console.log(this.products)
+
         },
         error: (e) => {
           console.log(e);
@@ -69,8 +69,9 @@ export class ShopComponent implements OnInit {
   GetProductos(index: number, cant: number) {
     this.getService.getAllByPage(index, cant)
       .subscribe({
-        next: (res:any) => {
+        next: (res: any) => {
           this.products = res.rows;
+
         },
         error: (e) => {
           console.log(e);

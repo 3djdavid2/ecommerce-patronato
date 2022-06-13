@@ -75,7 +75,7 @@ export class ProductsComponent implements OnInit {
     this.authService.email$
       .subscribe({
         next: (res: any) => {
-          console.log("el res es:,", res)
+         
           this.pEmail = res.email
         },
         error: (e: any) => {
