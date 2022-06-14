@@ -17,7 +17,7 @@
             <mat-card-content>
                 <div>
                     <div>Código: {{product.codigo}}</div>
-                   
+
                 </div>
                 <p>Descripcion: {{product.descripcion}}
                 </p>
@@ -25,10 +25,15 @@
 
 
             <div class="precio">Precio: $ {{product.precio}}.-</div>
-           
+
             <mat-card-actions>
                 <app-button mat-button routerLink="/producto/{{product.id}}">Ver</app-button>
-                <app-button mat-button (click)="openDialog(product.id)">Añadir al carrito</app-button>
+                <span class="mat-class" *ngIf="product.estado !== 'agotado'; else agotado">
+                    <app-button mat-button (click)="openDialog(product.id)">Añadir al carrito</app-button>
+                </span>
+                <ng-template #agotado>
+                    <span >PRODUCTO AGOTADO</span>
+                </ng-template>
             </mat-card-actions>
 
         </mat-card>
