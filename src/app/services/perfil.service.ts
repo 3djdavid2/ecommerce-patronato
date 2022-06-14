@@ -17,6 +17,11 @@ export class PerfilService {
 
   }
 
+getCarrito(){
+  return this.http.get<any>(this.URL + '/api/carrito')
+
+}
+
   getMisDatos() {
 
     return this.http.get<any>(this.URL + '/api/perfil')
@@ -26,7 +31,6 @@ export class PerfilService {
 
     return this.http.put<any>(this.URL + '/api/perfil', dataBody)
   }
-
 
   createCarrito(productoId: number, producto: string, precio: number, cantidad: number, total: number) {
 

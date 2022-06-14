@@ -1,8 +1,22 @@
-<div class="tareas">
+<div class="Detalles">
     <h1>Carrito de Compras</h1>
-    <ul>
-        <!-- <li *ngFor="let cliente of clientes">
-            {{cliente._id}} - {{cliente.name}}: {{cliente.description}}
-        </li> -->
-    </ul>
+
+
+    <table>
+        <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+            <th>Total</th>
+        </tr>
+        <tr *ngFor="let prod of carrito">
+            <td> {{prod.producto }} </td>
+            <td>{{prod.cantidad}}</td>
+            <td>{{prod.precio}}</td>
+            <td> {{prod.total}}</td>
+        </tr>
+    </table>
+
+
+
 </div>

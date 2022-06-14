@@ -1,5 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
+import { PerfilService } from '@app/services/perfil.service';
 
 @Component({
   selector: 'app-carrito',
@@ -9,12 +10,22 @@ import { Component, OnInit } from '@angular/core';
 
 export class CarritoComponent implements OnInit {
 
+  carrito: any[] = [];
 
-  constructor() { }
+  constructor(private perfilService: PerfilService) { }
 
   ngOnInit(): void {
 
-    
+    this.perfilService.getCarrito()
+      .subscribe({
+        next: ((res) => {
+
+          this.carrito.push(res.rows)
+          this.carrito = this.carrito[0]
+         
+        })
+      })
+
   }
 
 }
