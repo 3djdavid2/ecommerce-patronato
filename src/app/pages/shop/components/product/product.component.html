@@ -21,7 +21,7 @@
         <h2>Pago</h2>
         <h3> {{product.nombre}}</h3>
         <h2> ${{total | number}}.-</h2>
-        <app-button (click)="openDialog()">Añadir al carrito</app-button>
+        <app-button (click)="openDialog(product.id)">Añadir al carrito</app-button>
     </div>
 
     <div class="descripcion">

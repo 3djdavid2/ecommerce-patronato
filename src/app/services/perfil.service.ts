@@ -18,19 +18,19 @@ export class PerfilService {
   }
 
   getMisDatos() {
- 
+
     return this.http.get<any>(this.URL + '/api/perfil')
   }
 
-  putMisDatos(email: any, dataBody: any) {
+  putMisDatos(dataBody: any) {
 
-    return this.http.put<any>(this.URL + '/api/perfil' , dataBody)
+    return this.http.put<any>(this.URL + '/api/perfil', dataBody)
   }
 
 
-  createCarrito(email: any, productId: number, cant: number) {
-    
-    return this.http.post<any>(this.URL + `/api/carrito`, {productId, cant })
+  createCarrito(productoId: number, producto: string, precio: number, cantidad: number, total: number) {
+
+    return this.http.post<any>(this.URL + `/api/carrito`, { productoId, producto, precio, cantidad, total })
 
   }
 

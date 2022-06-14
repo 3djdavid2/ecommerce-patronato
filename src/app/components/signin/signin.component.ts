@@ -31,11 +31,11 @@ export class SigninComponent {
 
 
     this.formIngreso = new FormGroup({
-      email: new FormControl('',
+      email: new FormControl('dj.vivanco@gmail.com',
         [Validators.required,
         Validators.pattern(/^[0-9a-zA-Z]+([0-9a-zA-Z]*[-._+])*[0-9a-zA-Z]+@[0-9a-zA-Z]+([-.][0-9a-zA-Z]+)*([0-9a-zA-Z]*[.])[a-zA-Z]{2,6}$/)
         ]),
-      password: new FormControl('',
+      password: new FormControl('123456',
         [Validators.required,
         Validators.minLength(6)
         ])

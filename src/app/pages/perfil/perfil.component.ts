@@ -77,7 +77,7 @@ export class PerfilComponent implements OnInit {
   onSubmit() {
 
 
-    this.perfilService.putMisDatos(this.pEmail, this.formulario.value)
+    this.perfilService.putMisDatos(this.formulario.value)
       .subscribe({
         next: (res: any) => {
 
