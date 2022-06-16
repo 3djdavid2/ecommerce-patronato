@@ -14,7 +14,7 @@ import { MatSidenavModule } from '@angular/material/sidenav'
 import { MatListModule } from '@angular/material/list';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDialogModule } from '@angular/material/dialog'
-
+import {MatBadgeModule} from '@angular/material/badge';
 
 @NgModule({
     imports: [
@@ -32,7 +32,9 @@ import { MatDialogModule } from '@angular/material/dialog'
         MatListModule,
         MatSidenavModule,
         MatRadioModule,
-        MatDialogModule
+        MatDialogModule,
+        MatBadgeModule,
+
 
     ],
     exports: [
@@ -50,7 +52,9 @@ import { MatDialogModule } from '@angular/material/dialog'
         MatListModule,
         MatSidenavModule,
         MatRadioModule,
-        MatDialogModule
+        MatDialogModule,
+        MatBadgeModule,
+        
     ]
 })
 

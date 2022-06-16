@@ -1,4 +1,20 @@
-table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-  }
+.container {
+  padding: 10px;
+}
+table,
+th,
+td {
+  border: 1px solid rgb(68, 67, 67);
+  max-width: 500px;
+  border-collapse: collapse;
+}
+td {
+  padding: 5px;
+  text-align: right;
+}
+.nombreProd {
+  text-align: left;
+}
+tr:hover{
+  background-color: rgb(173, 211, 173) ;
+}

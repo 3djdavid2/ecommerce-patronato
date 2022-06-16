@@ -24,7 +24,8 @@
   <div class="header__buttons" fxHide.xs fxHide.sm>
 
     <app-a class="app-a" routerLink="carrito" routerLinkActive="app-a_active">
-      <span class="material-icons md-36 estiloIcon">shopping_cart</span>
+     
+      <span class="material-icons md-36 estiloIcon" [matBadge]="authService.badgeCarrito$ | async" matBadgeColor="warn">shopping_cart</span>
     </app-a>
 
 

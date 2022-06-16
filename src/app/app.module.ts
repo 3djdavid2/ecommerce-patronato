@@ -1,6 +1,10 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
+
+import localeEs from '@angular/common/locales/es';
+import { registerLocaleData } from '@angular/common';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
@@ -52,6 +56,7 @@ const APP_DATE_FORMATS: MatDateFormats = {
   }
 };
 
+registerLocaleData(localeEs)
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,7 +68,7 @@ const APP_DATE_FORMATS: MatDateFormats = {
     HomeComponent,
     ContactoComponent,
     SucursalesComponent,
-    AutoFocusInputDirective,    
+    AutoFocusInputDirective,
   ],
   imports: [
     CommonModule,
@@ -77,13 +82,16 @@ const APP_DATE_FORMATS: MatDateFormats = {
     HttpClientModule,
     NotificationModule.forRoot(),
     MatNativeDateModule,
-   
-   
+
+
   ],
   providers: [
-    {provide: JWT_OPTIONS, useValue:JWT_OPTIONS},
+    {
+      provide: LOCALE_ID, useValue: 'es-ES'
+    },
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
     JwtHelperService,
-    AuthGuard, 
+    AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,

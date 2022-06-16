@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { PerfilService } from '@app/services/perfil.service';
 import { AuthService } from '../../services/auth.service'
 @Component({
   selector: 'app-header',
@@ -12,7 +13,11 @@ export class HeaderComponent implements OnInit {
   pEmail: any;
   admin!: boolean;
 
-  constructor(public authService: AuthService) {
+
+  constructor(
+    public authService: AuthService,
+    public perfilService: PerfilService
+  ) {
     this.pEmail = ''
   }
 
@@ -22,7 +27,8 @@ export class HeaderComponent implements OnInit {
     this.authService.email$
       .subscribe({
         next: (res: any) => {
-          this.pEmail = res.email
+
+          this.pEmail = res
         },
         error: (e: any) => {
           console.log("el error es:", e)
@@ -34,6 +40,7 @@ export class HeaderComponent implements OnInit {
 
 
   }
+
 
   onClicked(): void {
     this.menuClicked.emit();

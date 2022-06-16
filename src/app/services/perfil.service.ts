@@ -1,7 +1,8 @@
 
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment'
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,25 +12,29 @@ export class PerfilService {
   data: any;
   private URL = environment.baseUrl
 
+
   constructor(
     private http: HttpClient
   ) {
 
   }
 
-getCarrito(){
-  return this.http.get<any>(this.URL + '/api/carrito')
-
-}
-
-  getMisDatos() {
-
-    return this.http.get<any>(this.URL + '/api/perfil')
+  getBadge(){
+    return this.http.get<any>(this.URL + '/api/carrito/pendiente')
   }
 
-  putMisDatos(dataBody: any) {
+  updateProdIdCarrito(dataBody:any) {
+    return this.http.put<any>(this.URL + `/api/carrito/`, dataBody)
+  }
 
-    return this.http.put<any>(this.URL + '/api/perfil', dataBody)
+  deleteProdIdCarrito(id:number) {
+    return this.http.delete<any>(this.URL + `/api/carrito/${id}`)
+  }
+
+
+  getCarrito() {
+    return this.http.get<any>(this.URL + '/api/carrito')
+
   }
 
   createCarrito(productoId: number, producto: string, precio: number, cantidad: number, total: number) {
@@ -37,5 +42,15 @@ getCarrito(){
     return this.http.post<any>(this.URL + `/api/carrito`, { productoId, producto, precio, cantidad, total })
 
   }
+
+  //
+  getMisDatos() {
+    return this.http.get<any>(this.URL + '/api/perfil')
+  }
+
+  putMisDatos(dataBody: any) {
+    return this.http.put<any>(this.URL + '/api/perfil', dataBody)
+  }
+
 
 }

@@ -18,6 +18,9 @@ export class AuthService {
 
   roleSource = new BehaviorSubject(null);
   role$ = this.roleSource.asObservable();
+  
+  badgeCarritoSource = new BehaviorSubject(null);
+  badgeCarrito$ = this.badgeCarritoSource.asObservable();
 
   constructor(
     private jwtHelper: JwtHelperService,
@@ -36,7 +39,8 @@ export class AuthService {
 
   signIn(user: any) {
 
-    this.emailSource.next(user)
+    this.emailSource.next(user.email)
+    this.badgeCarritoSource.next(null)
 
     let headers = new HttpHeaders({
       'clicksignin': 'true'
@@ -48,9 +52,13 @@ export class AuthService {
   }
 
 
+
+
   logout() {
     localStorage.removeItem('token');
-    this.router.navigate(['/home'])
+    this.router.navigate(['/home']);
+    this.badgeCarritoSource.next(null)
+    
   }
 
   roleToken(token:any):Observable<any>{    

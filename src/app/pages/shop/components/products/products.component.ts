@@ -17,8 +17,6 @@ export class ProductsComponent implements OnInit {
 
   //recibo la lista de productos desde el padre
   @Input() products !: Product[];
-
-
   pEmail: any;
   
   constructor(
@@ -66,6 +64,7 @@ export class ProductsComponent implements OnInit {
       .subscribe({
         next: (res: any) => {
           console.log("Carrito creado!", res)
+          this.CarritoBadge();
         },
         error: (e: any) => {
           console.log("el error es:", e)
@@ -73,6 +72,24 @@ export class ProductsComponent implements OnInit {
         complete: () => {
           console.info('completed')
         }
+      })
+
+  }
+
+  //actualiza la cantidad de productos (unidades) en el icono de carrito en la barra de menu superior (badge)
+  CarritoBadge() {
+
+    this.perfilService.getCarrito()
+      .subscribe({
+        next: ((res) => {
+
+          let arrCarrito = []
+          arrCarrito.push(res.rows)
+          let carrito = arrCarrito[0]
+          let cantProdTotal = carrito.map((prod: any) => prod.cantidad).reduce((prev: any, curr: any) => prev + curr, 0);
+
+          this.authService.badgeCarritoSource.next(cantProdTotal)
+        })
       })
 
   }

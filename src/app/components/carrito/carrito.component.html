@@ -1,22 +1,41 @@
-<div class="Detalles">
-    <h1>Carrito de Compras</h1>
+<div class="container">
+
+    <h2>Carrito de Compras</h2>
+
+    <h1>Total: ${{totalPagar | number}}.- CLP</h1>
+    <h2>{{cantProdTotal}} productos</h2>
+    <div class="tabla">
+
+        <table>
+            <tr>
+                <th>Item</th>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Precio</th>
+                <th>Total</th>
+                <th>+/-</th>
+                <th>Borrar</th>
+            </tr>
+            <tr *ngFor="let prod of carrito, index as i">
+                <td>{{ i+1 }}</td>
+                <td class="nombreProd">{{prod.producto }}</td>
+                <td>{{prod.cantidad}}</td>
+                <td>{{prod.precio | number}}</td>
+                <td>{{prod.total | number}}</td>
+                <td><a (click)="suma(prod.id, prod.cantidad, prod.precio)">
+                        <mat-icon>add_circle</mat-icon>
+                    </a>
+                    <a (click)="resta(prod.id, prod.cantidad, prod.precio)">
+                        <mat-icon>remove_circle</mat-icon>
+                    </a>
+                </td>
+                <td (click)="deleteById(prod.id)" style="visibility:visible;">
+                    <mat-icon>delete</mat-icon>
+                </td>
+            </tr>
+        </table>
 
 
-    <table>
-        <tr>
-            <th>Producto</th>
-            <th>Cantidad</th>
-            <th>Precio</th>
-            <th>Total</th>
-        </tr>
-        <tr *ngFor="let prod of carrito">
-            <td> {{prod.producto }} </td>
-            <td>{{prod.cantidad}}</td>
-            <td>{{prod.precio}}</td>
-            <td> {{prod.total}}</td>
-        </tr>
-    </table>
 
-
-
+    </div>
 </div>

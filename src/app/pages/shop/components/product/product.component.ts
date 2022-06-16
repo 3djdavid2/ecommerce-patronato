@@ -59,6 +59,24 @@ export class ProductComponent implements OnInit {
     }
   }
 
+//actualiza la cantidad de productos (unidades) en el icono de carrito en la barra de menu superior (badge)
+CarritoBadge() {
+
+  this.perfilService.getCarrito()
+    .subscribe({
+      next: ((res) => {
+
+        let arrCarrito = []
+        arrCarrito.push(res.rows)
+        let carrito = arrCarrito[0]
+        let cantProdTotal = carrito.map((prod: any) => prod.cantidad).reduce((prev: any, curr: any) => prev + curr, 0);
+
+        this.authService.badgeCarritoSource.next(cantProdTotal)
+      })
+    })
+
+}
+
   createCarrito(product: any) {
 
     // let cant = 1; //la cantidad en product depende de la seleccion de + y - del html
@@ -67,6 +85,7 @@ export class ProductComponent implements OnInit {
       .subscribe({
         next: (res: any) => {
           console.log("Carrito creado desde product!", res)
+          
         },
         error: (e: any) => {
           console.log("el error es:", e)
@@ -87,8 +106,8 @@ export class ProductComponent implements OnInit {
           this.product = res;
           this.total = +this.cantidad * + this.product.precio;
           if(agregarAlCarrito){
-
             this.createCarrito(res);
+            this.CarritoBadge();
           }
         },
         error: (e) => {

@@ -20,7 +20,7 @@ export class MenuListComponent implements OnInit {
         .subscribe({
           next: (res: any) => {
 
-            this.pEmail = res.email
+            this.pEmail = res
           },
           error: (e: any) => {
             console.log("el error es:", e)
