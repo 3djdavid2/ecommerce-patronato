@@ -5,6 +5,10 @@
       <a class="app-a" routerLinkActive="app-a_active" (click)="onClicked()">
         <span class="material-icons md-36 estiloIcon">menu</span>
       </a>
+      <div class="icono">
+        <img src="favicon.ico" style="width: 40px;" alt="icono Empresa">
+      </div>
+      <div class="empresa">{{empresa}}</div>
     </div>
 
   </div>
@@ -24,8 +28,9 @@
   <div class="header__buttons" fxHide.xs fxHide.sm>
 
     <app-a class="app-a" routerLink="carrito" routerLinkActive="app-a_active">
-     
-      <span class="material-icons md-36 estiloIcon" [matBadge]="authService.badgeCarrito$ | async" matBadgeColor="warn">shopping_cart</span>
+
+      <span class="material-icons md-36 estiloIcon" [matBadge]="authService.badgeCarrito$ | async"
+        matBadgeColor="warn">shopping_cart</span>
     </app-a>
 
 
@@ -38,7 +43,7 @@
   </div>
   <ng-template #loggedIn>
     <h2 routerLink="/perfil" class="app-a" style="padding-top: 10px;">{{pEmail}}</h2>
-    <app-button (click)="authService.logout()">Cerrar Sesion</app-button>
+    <app-button class="cerrar" (click)="authService.logout()">Cerrar Sesion</app-button>
   </ng-template>
 
 

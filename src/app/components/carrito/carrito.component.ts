@@ -26,6 +26,9 @@ export class CarritoComponent implements OnInit {
     this.Carrito();
   }
 
+  pagar(){
+    console.log("pagar ahora")
+  }
   suma(id: number, cantActual: number, precioActual: number) {
 
     const cantidad = cantActual + 1

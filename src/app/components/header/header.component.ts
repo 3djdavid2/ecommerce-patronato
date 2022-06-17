@@ -12,13 +12,14 @@ export class HeaderComponent implements OnInit {
   @Output() menuClicked = new EventEmitter();
   pEmail: any;
   admin!: boolean;
-
+  empresa!:string;
 
   constructor(
     public authService: AuthService,
     public perfilService: PerfilService
   ) {
-    this.pEmail = ''
+    this.pEmail = '';
+    this.empresa= 'Patronato Telas'
   }
 
   ngOnInit(): void {
