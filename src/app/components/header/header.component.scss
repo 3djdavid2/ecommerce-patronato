@@ -10,20 +10,11 @@
   background-color: $primary-dark;
 
   &__title {
-    display: grid;
+    display: inline-flex;
     align-items: center;
-    grid-template-columns: 1fr 1fr;
+   
     cursor: pointer;
-    vertical-align: middle;
-    font-size: 1.2em;
-    transform: translate(-15px, 10px);
 
-    & .icono {
-      transform: translate(90px, -40px);
-    }
-    & .empresa {
-      transform: translate(140px, -70px);
-    }
   }
 
   &__navigation {
@@ -82,16 +73,7 @@
     }
 
   }
-  .header {
-    &__title {
-      & .icono {
-        transform: translate(63px, -40px);
-      }
-      & .empresa {
-        display: none;
-      }
-    }
-  }
+  
 }
 
 .app-a_active {

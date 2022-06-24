@@ -62,13 +62,17 @@ export class PerfilComponent implements OnInit {
             })
           },
           error: (e: any) => {
-            console.log("el error es:", e)          
+            console.log("el error es:", e)
           },
           complete: () => {
             console.info('completed')
           }
         })
+
+
+
     }
+
 
   }
 

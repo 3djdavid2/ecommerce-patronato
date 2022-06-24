@@ -48,7 +48,8 @@ import { MatDialogModule } from '@angular/material/dialog'
     MatListModule,
     SelectModule,
     MatPaginatorModule,
-    MatDialogModule
+    MatDialogModule,
+    
 
   ],
   providers: [

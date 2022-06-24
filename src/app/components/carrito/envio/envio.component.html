@@ -1,0 +1,64 @@
+<div class="container">
+    <div class="titulo">
+        <h1>Datos envío o retiro de productos</h1>
+    </div>
+    <div class="tipo">
+        <h2>Seleccionar tipo de entrega</h2>
+
+        <mat-radio-group aria-label="Select an option" [(ngModel)]="selectedRadioGroup">
+
+            <div class="tienda" [ngClass]="{active:(selectedRadioGroup === '1')}">
+                <mat-radio-button value="1">Retiro en tienda </mat-radio-button>
+
+                <mat-form-field appearance="fill" *ngIf="selectedRadioGroup === '1'">
+                    <mat-label *ngIf="!selected">Selecciona Tienda para retiro</mat-label>
+                    <mat-select [(value)]="selected">
+                        <mat-option *ngFor="let tienda of tiendas" [value]="tienda.value">
+                            {{tienda.viewValue}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <div class="quien" *ngIf="selectedRadioGroup == '1'">
+                    <h2>Identificar quien retirará</h2>
+                    <mat-radio-group aria-label="Select an option" [(ngModel)]="selectedRadioGroupQuien">
+                      
+                        <mat-radio-button value="1">La misma persona</mat-radio-button>
+
+                        <span class="otra">
+                            <mat-radio-button value="2">Otra persona retirará</mat-radio-button>
+                            <div class="inputs" *ngIf="selectedRadioGroupQuien == '2'">
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Rut</mat-label>
+                                    <input matInput>
+                                </mat-form-field>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Nombre</mat-label>
+                                    <input matInput>
+                                </mat-form-field>
+                            </div>
+                        </span>
+                    </mat-radio-group>
+                </div>
+            </div>
+
+            <div class="domicilio" [ngClass]="{active:(selectedRadioGroup === '2')}">
+                <mat-radio-button value="2">Despacho a Domicilio</mat-radio-button>
+            </div>
+
+
+        </mat-radio-group>
+    </div>
+    <div class="documento">
+        <h2>Tipo de documento</h2>
+        <div class="tipodoc">
+
+            <mat-radio-group aria-label="Select an option" [(ngModel)]="selectedRadioGroupTipoDoc">
+                {{selectedRadioGroupTipoDoc}}
+                <mat-radio-button value="1">Boleta</mat-radio-button>
+                <mat-radio-button value="2">Factura</mat-radio-button>
+            </mat-radio-group>
+        </div>
+    </div>
+
+</div>

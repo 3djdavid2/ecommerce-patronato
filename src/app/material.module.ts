@@ -14,7 +14,8 @@ import { MatSidenavModule } from '@angular/material/sidenav'
 import { MatListModule } from '@angular/material/list';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDialogModule } from '@angular/material/dialog'
-import {MatBadgeModule} from '@angular/material/badge';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
     imports: [
@@ -34,6 +35,8 @@ import {MatBadgeModule} from '@angular/material/badge';
         MatRadioModule,
         MatDialogModule,
         MatBadgeModule,
+        MatTableModule,
+
 
 
     ],
@@ -54,7 +57,7 @@ import {MatBadgeModule} from '@angular/material/badge';
         MatRadioModule,
         MatDialogModule,
         MatBadgeModule,
-        
+        MatTableModule,
     ]
 })
 

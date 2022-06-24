@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment'
-import { BehaviorSubject, Observable } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
@@ -15,26 +15,28 @@ export class PerfilService {
 
   constructor(
     private http: HttpClient
-  ) {
+  ) { }
 
+
+  getCompras() {
+    return this.http.get<any>(this.URL + '/api/compras')
   }
 
-  getBadge(){
-    return this.http.get<any>(this.URL + '/api/carrito/pendiente')
+  getBadge() {
+    return this.http.get<any>(this.URL + '/api/carrito')
   }
 
-  updateProdIdCarrito(dataBody:any) {
+  updateProdIdCarrito(dataBody: any) {
     return this.http.put<any>(this.URL + `/api/carrito/`, dataBody)
   }
 
-  deleteProdIdCarrito(id:number) {
+  deleteProdIdCarrito(id: number) {
     return this.http.delete<any>(this.URL + `/api/carrito/${id}`)
   }
 
 
   getCarrito() {
     return this.http.get<any>(this.URL + '/api/carrito')
-
   }
 
   createCarrito(productoId: number, producto: string, precio: number, cantidad: number, total: number) {
@@ -43,7 +45,7 @@ export class PerfilService {
 
   }
 
-  //
+
   getMisDatos() {
     return this.http.get<any>(this.URL + '/api/perfil')
   }

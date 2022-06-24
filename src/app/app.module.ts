@@ -22,6 +22,8 @@ import { TokenInterceptorService } from './services/token-interceptor.service'
 //clase 64:
 import { MatNativeDateModule, MatDateFormats, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core'
 //--
+import { MatPaginatorModule, MatPaginatorIntl } from '@angular/material/paginator';
+import { MatPaginationService } from './services/matpaginationtranslate.service';
 
 import { ButtonModule } from '@app/shared/buttons';
 
@@ -40,7 +42,8 @@ import { AutoFocusInputDirective } from './directivas/auto-focus-input.directive
 import { SucursalesComponent } from './pages/sucursales/sucursales.component';
 
 //https://www.youtube.com/watch?v=vTtcuIZIvAA Canal de kevin Davila
-import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt'; // npm i --save @auth0/angular-jwt
+import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { EnvioComponent } from './components/carrito/envio/envio.component'; // npm i --save @auth0/angular-jwt
 //
 
 
@@ -69,6 +72,7 @@ registerLocaleData(localeEs)
     ContactoComponent,
     SucursalesComponent,
     AutoFocusInputDirective,
+    EnvioComponent,
   ],
   imports: [
     CommonModule,
@@ -82,10 +86,15 @@ registerLocaleData(localeEs)
     HttpClientModule,
     NotificationModule.forRoot(),
     MatNativeDateModule,
-
+    MatPaginatorModule,
 
   ],
+
+
   providers: [
+    {
+      provide: MatPaginatorIntl, useClass: MatPaginationService
+    },
     {
       provide: LOCALE_ID, useValue: 'es-ES'
     },

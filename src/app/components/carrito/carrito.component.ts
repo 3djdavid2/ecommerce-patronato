@@ -1,34 +1,56 @@
 
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 import { AuthService } from '@app/services/auth.service';
 import { PerfilService } from '@app/services/perfil.service';
 
+export interface TablaProductos {
+  id: number;
+  producto: string;
+  cantidad: number;
+  precio: number;
+  total: number;
+  editarCant: string;
+  borrarProd: string;
+}
 @Component({
   selector: 'app-carrito',
   templateUrl: './carrito.component.html',
   styleUrls: ['./carrito.component.scss']
 })
 
-export class CarritoComponent implements OnInit {
+export class CarritoComponent implements AfterViewInit {
 
-  carrito: any[] = [];
+  carrito: TablaProductos[] = [];
   totalPagar!: any;
   cantidad!: number;
   cantProdTotal!: any;
 
+  displayedColumns: string[] = ['producto', 'cantidad', 'precio', 'total', 'editar', 'borrar'];
+  dataSource: MatTableDataSource<TablaProductos>;
+
+
+
   constructor(
     private perfilService: PerfilService,
-    private authService: AuthService
-  ) { }
+    private authService: AuthService,
+  ) {
 
-  ngOnInit(): void {
-
-    this.Carrito();
+    this.dataSource = new MatTableDataSource()
   }
 
-  pagar(){
+
+  ngAfterViewInit() {
+    this.Carrito();
+    this.dataSource = new MatTableDataSource(this.carrito)
+
+  }
+
+  irPago() {
     console.log("pagar ahora")
   }
+
+
   suma(id: number, cantActual: number, precioActual: number) {
 
     const cantidad = cantActual + 1
@@ -48,7 +70,7 @@ export class CarritoComponent implements OnInit {
 
   resta(id: number, cantActual: number, precioActual: number) {
     if (cantActual > 1) {
-      const cantidad = cantActual  - 1
+      const cantidad = cantActual - 1
       const total = precioActual * cantidad
       const data = { id: id, cantidad: cantidad, total: total }
 
@@ -85,8 +107,10 @@ export class CarritoComponent implements OnInit {
     this.perfilService.getCarrito()
       .subscribe({
         next: ((res) => {
-          this.carrito.push(res.rows)
-          this.carrito = this.carrito[0]
+
+          this.carrito.push(...res.rows) //array
+          this.dataSource = new MatTableDataSource<TablaProductos>(this.carrito);
+
           this.cantProdTotal = this.carrito.map(prod => prod.cantidad).reduce((prev, curr) => prev + curr, 0);
           this.totalPagar = this.carrito.map(prod => prod.total).reduce((prev, curr) => prev + curr, 0);
           this.authService.badgeCarritoSource.next(this.cantProdTotal)
@@ -94,6 +118,7 @@ export class CarritoComponent implements OnInit {
       })
 
   }
+
 
 
 }
