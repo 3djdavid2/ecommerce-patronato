@@ -42,6 +42,7 @@ export class ComprasComponent implements OnInit {
         next: (res: any) => {
           this.dataSource = res.rows
           this.agrupaOrden(res.rows)
+          console.log(res.rows)
 
 
         },
@@ -60,10 +61,18 @@ export class ComprasComponent implements OnInit {
     array.reduce((res: any, compra: any) => {
 
       if (!res[compra.ordenPedido]) {
-        res[compra.ordenPedido] = { ordenPedido: compra.ordenPedido, total: 0 };
+
+        res[compra.ordenPedido] = {
+           ordenPedido: compra.ordenPedido,
+            fechaCompra: compra.sesion, 
+            cantidad: 0,
+            total: 0
+           };
+
         result.push(res[compra.ordenPedido])
       }
       res[compra.ordenPedido].total += compra.total;
+      res[compra.ordenPedido].cantidad += compra.cantidad;
       return res
     }, {});
 
