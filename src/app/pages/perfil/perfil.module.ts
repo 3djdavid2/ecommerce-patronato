@@ -5,6 +5,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
+
+
 import { PerfilRoutingModule } from './perfil-routing.module';
 import { PerfilComponent } from './perfil.component';
 import { ButtonsModule } from '@app/shared';
@@ -25,7 +27,8 @@ import { ComprasComponent } from './compras/compras.component';
     ButtonsModule,
     MatTableModule,
     MatExpansionModule,
-    MatIconModule
+    MatIconModule,
+   
   ]
 })
 export class PerfilModule { }

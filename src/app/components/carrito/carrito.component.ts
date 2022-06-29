@@ -6,7 +6,7 @@ import { PerfilService } from '@app/services/perfil.service';
 
 export interface TablaProductos {
   id: number;
-  producto: string;
+   producto: string;
   cantidad: number;
   precio: number;
   total: number;
@@ -34,6 +34,7 @@ export class CarritoComponent implements AfterViewInit {
   constructor(
     private perfilService: PerfilService,
     private authService: AuthService,
+   
   ) {
 
     this.dataSource = new MatTableDataSource()
@@ -46,10 +47,6 @@ export class CarritoComponent implements AfterViewInit {
 
   }
 
-  irPago() {
-    console.log("pagar ahora")
-  }
-
 
   suma(id: number, cantActual: number, precioActual: number) {
 
@@ -60,7 +57,7 @@ export class CarritoComponent implements AfterViewInit {
     this.perfilService.updateProdIdCarrito(data)
       .subscribe({
         next: ((res) => {
-          console.log("update ok: ", res)
+          console.log("update ok: ")
           if (res[0] == 1) {
             this.Carrito();
           }
@@ -93,7 +90,7 @@ export class CarritoComponent implements AfterViewInit {
     this.perfilService.deleteProdIdCarrito(id)
       .subscribe({
         next: ((res) => {
-          console.log("deletebyid es res: ", res)//'Producto Borrado'
+          console.log('Producto Borrado')
           this.Carrito();
 
         })
@@ -118,7 +115,5 @@ export class CarritoComponent implements AfterViewInit {
       })
 
   }
-
-
 
 }

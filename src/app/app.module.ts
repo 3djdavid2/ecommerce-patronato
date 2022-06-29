@@ -43,7 +43,8 @@ import { SucursalesComponent } from './pages/sucursales/sucursales.component';
 
 //https://www.youtube.com/watch?v=vTtcuIZIvAA Canal de kevin Davila
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
-import { EnvioComponent } from './components/carrito/envio/envio.component'; // npm i --save @auth0/angular-jwt
+import { EnvioComponent } from './components/carrito/envio/envio.component';
+import { PagoComponent } from './components/carrito/pago/pago.component'; // npm i --save @auth0/angular-jwt
 //
 
 
@@ -73,6 +74,7 @@ registerLocaleData(localeEs)
     SucursalesComponent,
     AutoFocusInputDirective,
     EnvioComponent,
+    PagoComponent,
   ],
   imports: [
     CommonModule,
@@ -87,6 +89,7 @@ registerLocaleData(localeEs)
     NotificationModule.forRoot(),
     MatNativeDateModule,
     MatPaginatorModule,
+   
 
   ],
 

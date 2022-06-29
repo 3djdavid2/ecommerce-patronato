@@ -1,29 +1,47 @@
 <div class="container">
 
-    <div class="der">
-       <app-envio></app-envio>
+    <div class="pago">
+        <mat-stepper orientation="horizontal">
+            <mat-step  [editable]="true">
+              <ng-template matStepLabel>Envío/Retiro</ng-template>
+              <ng-template matStepContent>
+                <app-envio></app-envio>
+                <button mat-button matStepperNext>Ir al pago</button>
+              </ng-template>
+            </mat-step>
+            <mat-step>
+              <ng-template matStepLabel>Pago</ng-template>
+              <ng-template matStepContent>
+                <app-pago></app-pago>
+               
+                <button mat-button matStepperPrevious>Paso anterior</button>
+               
+              </ng-template>
+            </mat-step>
+          
+          </mat-stepper>
+          
     </div>
 
-    <div class="izq">
+    <div class="carrito">
 
         <div class="titulo">
             <div class="detalle">
                 <h1>Carrito de compra</h1>
                 <h1>Total a Pagar: $<b>{{totalPagar | number}}</b>.- (CLP)</h1>
             </div>
-            <div class="pago">
-                <app-button (click)="irPago()">IR AL PAGO</app-button>
-            </div>
+           
         </div>
 
 
+     
         <div class="tabla mat-elevation-z8">
             <table mat-table [dataSource]="dataSource">
 
                 <!-- id Column -->
                 <ng-container matColumnDef="id">
                 </ng-container>
-
+        
                 <!-- producto Column -->
                 <ng-container matColumnDef="producto">
                     <th mat-header-cell *matHeaderCellDef> Producto</th>
@@ -73,10 +91,6 @@
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>
 
-
-        
         </div>
-
     </div>
-
 </div>

@@ -1,0 +1,26 @@
+<h1>Tipo de pago</h1>
+
+<mat-radio-group aria-label="Select an option" (change)="radioId($event)">
+
+    <mat-radio-button value="1">
+        <h2>Tarjeta crédito/debito</h2>
+
+        <div class="inputs" *ngIf="tipo == '1'">
+
+            <mat-label>
+                <app-button>Pagar</app-button>
+            </mat-label>
+
+        </div>
+    </mat-radio-button>
+
+    <mat-radio-button value="2">
+        <h2>Transferencia</h2>
+
+        <div class="inputs" *ngIf="tipo == '2'">
+
+            <mat-label>{{transferencia}}</mat-label>
+
+        </div>
+    </mat-radio-button>
+</mat-radio-group>

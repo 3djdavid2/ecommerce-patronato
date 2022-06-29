@@ -1,5 +1,7 @@
 table {
+  table-layout: fixed;
   width: 100%;
+  border: 1px solid grey;
 }
 
 tr.example-detail-row {
@@ -38,8 +40,13 @@ tr.example-element-row:not(.example-expanded-row):active {
 }
 
 .collapsed {
- 
   height: 0px;
   min-height: 0px;
 }
-
+.extended {
+  background-color: rgb(194, 231, 197);
+}
+td {
+  width: 100px;
+  text-align: left;
+}

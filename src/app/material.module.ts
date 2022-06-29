@@ -16,7 +16,8 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatDialogModule } from '@angular/material/dialog'
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatTableModule } from '@angular/material/table';
-
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatExpansionModule } from '@angular/material/expansion';
 @NgModule({
     imports: [
         MatSliderModule,
@@ -36,6 +37,8 @@ import { MatTableModule } from '@angular/material/table';
         MatDialogModule,
         MatBadgeModule,
         MatTableModule,
+        MatStepperModule,
+        MatExpansionModule
 
 
 
@@ -58,6 +61,8 @@ import { MatTableModule } from '@angular/material/table';
         MatDialogModule,
         MatBadgeModule,
         MatTableModule,
+        MatStepperModule,
+        MatExpansionModule
     ]
 })
 

@@ -20,7 +20,9 @@ export interface TablaDetalles {
 })
 export class ComprasComponent implements OnInit {
 
-  result: any;
+
+  productos!: any[];
+  ordenes!: any;
 
   dataSource!: TablaDetalles[];
   columnsToDisplay = ['ordenPedido', 'fechaCompra', 'cantidad', 'total'];
@@ -41,9 +43,8 @@ export class ComprasComponent implements OnInit {
       .subscribe({
         next: (res: any) => {
           this.dataSource = res.rows
+          this.productos = res.rows
           this.agrupaOrden(res.rows)
-          console.log(res.rows)
-
 
         },
         error: (e: any) => {
@@ -63,11 +64,11 @@ export class ComprasComponent implements OnInit {
       if (!res[compra.ordenPedido]) {
 
         res[compra.ordenPedido] = {
-           ordenPedido: compra.ordenPedido,
-            fechaCompra: compra.sesion, 
-            cantidad: 0,
-            total: 0
-           };
+          ordenPedido: compra.ordenPedido,
+          fechaCompra: compra.sesion,
+          cantidad: 0,
+          total: 0
+        };
 
         result.push(res[compra.ordenPedido])
       }
@@ -77,15 +78,17 @@ export class ComprasComponent implements OnInit {
     }, {});
 
 
-    this.dataSource = this.result = result
-    console.log("resultado es: ", this.result)
+    this.dataSource = result
+
 
   }
 
-  onClickOrden(orden:any){
-    console.log(orden)
-  }
+  onClickOrden(orden: any) {
+    this.ordenes = this.productos.filter(obj => {
+      return obj.ordenPedido === orden
+    })
 
+  }
 
 
 }

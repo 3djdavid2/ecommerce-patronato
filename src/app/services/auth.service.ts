@@ -27,8 +27,6 @@ export class AuthService {
     private http: HttpClient,
     private router: Router
   ) {
-
-
   }
 
 
@@ -76,4 +74,6 @@ export class AuthService {
     }
     return true;  
   }
+
+
 }

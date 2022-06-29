@@ -71,6 +71,7 @@ export class ShopComponent implements OnInit {
       .subscribe({
         next: (res: any) => {
           this.products = res.rows;
+          console.log(this.products)
 
         },
         error: (e) => {
